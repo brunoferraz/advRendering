@@ -20,23 +20,26 @@ LIBS += -lGLEW -lGLU
 
 INCLUDEPATH +=  $$TUCANO_PATH/src $$TUCANO_PATH/effects $$EIGEN_PATH $$BUILDDIR/bin/effects
 
-OBJECTS_DIR =   $$BUILDDIR/obj
-MOC_DIR =       $$BUILDDIR/moc
-RCC_DIR =       $$BUILDDIR/rcc
-UI_DIR =        $$BUILDDIR/ui
+#OBJECTS_DIR =   $$BUILDDIR/obj
+#MOC_DIR =       $$BUILDDIR/moc
+#RCC_DIR =       $$BUILDDIR/rcc
+#UI_DIR =        $$BUILDDIR/ui
 DESTDIR =       $$BUILDDIR/bin
 
 QMAKE_CXXFLAGS += -DTUCANODEBUG
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    glwidget.cpp
+    glwidget.cpp \
+    interface.cpp
 
 HEADERS  += mainwindow.h \
         $$TUCANO_PATH/src/utils/qttrackballwidget.hpp \
         $$BUILDDIR/bin/effects/phongshader.hpp \
         $$BUILDDIR/bin/effects/phongcompleteshader.h \
-    glwidget.h
+        $$BUILDDIR/bin/effects/goochshader.h \
+    glwidget.h \
+    interface.h
 
 FORMS    += mainwindow.ui
 
@@ -47,3 +50,5 @@ OTHER_FILES += \
     $$BUILDDIR/bin/effects/shaders/shownormals.vert \
     $$BUILDDIR/bin/effects/shaders/shownormals.frag \
     $$BUILDDIR/bin/effects/shaders/shownormals.geom \
+    $$BUILDDIR/bin/effects/shaders/gooch.vert \
+    $$BUILDDIR/bin/effects/shaders/gooch.frag \

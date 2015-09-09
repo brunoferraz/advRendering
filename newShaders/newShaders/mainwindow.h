@@ -16,6 +16,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     GLWidget *glwidget;
+private slots:
+
+
+    void on_showNormalButton_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };
