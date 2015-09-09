@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -DTUCANODEBUG -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../tucano-master/src -I../../tucano-master/effects -I/usr/include/eigen3 -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore -I../build/moc -I../build/ui -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../../tucano-master/src -I../../tucano-master/effects -I/usr/include/eigen3 -I../build/bin/effects -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore -I../build/moc -I../build/ui -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/Qt/5.5/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -192,6 +192,7 @@ DIST          = /opt/Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		newShaders.pro mainwindow.h \
 		../../tucano-master/src/utils/qttrackballwidget.hpp \
 		../build/bin/effects/phongshader.hpp \
+		../build/bin/effects/phongcompleteshader.h \
 		glwidget.h main.cpp \
 		mainwindow.cpp \
 		glwidget.cpp
@@ -511,7 +512,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h ../../tucano-master/src/utils/qttrackballwidget.hpp ../build/bin/effects/phongshader.hpp glwidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h ../../tucano-master/src/utils/qttrackballwidget.hpp ../build/bin/effects/phongshader.hpp ../build/bin/effects/phongcompleteshader.h glwidget.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp mainwindow.cpp glwidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
@@ -880,8 +881,10 @@ compiler_moc_header_clean:
 		/opt/Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../tucano-master/effects/phongshader.hpp \
+		../build/bin/effects/phongcompleteshader.h \
+		../build/bin/effects/shownormals.h \
 		mainwindow.h
-	/opt/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/bruno/dev/advRendering/newShaders/newShaders -I/home/bruno/dev/advRendering/tucano-master/src -I/home/bruno/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore mainwindow.h -o ../build/moc/moc_mainwindow.cpp
+	/opt/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/bruno/dev/advRendering/newShaders/newShaders -I/home/bruno/dev/advRendering/tucano-master/src -I/home/bruno/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/home/bruno/dev/advRendering/newShaders/build/bin/effects -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore mainwindow.h -o ../build/moc/moc_mainwindow.cpp
 
 ../build/moc/moc_qttrackballwidget.cpp: ../../tucano-master/src/utils/objimporter.hpp \
 		../../tucano-master/src/mesh.hpp \
@@ -1217,7 +1220,7 @@ compiler_moc_header_clean:
 		/opt/Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../tucano-master/src/utils/qttrackballwidget.hpp
-	/opt/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/bruno/dev/advRendering/newShaders/newShaders -I/home/bruno/dev/advRendering/tucano-master/src -I/home/bruno/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore ../../tucano-master/src/utils/qttrackballwidget.hpp -o ../build/moc/moc_qttrackballwidget.cpp
+	/opt/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/bruno/dev/advRendering/newShaders/newShaders -I/home/bruno/dev/advRendering/tucano-master/src -I/home/bruno/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/home/bruno/dev/advRendering/newShaders/build/bin/effects -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore ../../tucano-master/src/utils/qttrackballwidget.hpp -o ../build/moc/moc_qttrackballwidget.cpp
 
 ../build/moc/moc_glwidget.cpp: /opt/Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -1555,8 +1558,10 @@ compiler_moc_header_clean:
 		/opt/Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../tucano-master/effects/phongshader.hpp \
+		../build/bin/effects/phongcompleteshader.h \
+		../build/bin/effects/shownormals.h \
 		glwidget.h
-	/opt/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/bruno/dev/advRendering/newShaders/newShaders -I/home/bruno/dev/advRendering/tucano-master/src -I/home/bruno/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore glwidget.h -o ../build/moc/moc_glwidget.cpp
+	/opt/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/opt/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/home/bruno/dev/advRendering/newShaders/newShaders -I/home/bruno/dev/advRendering/tucano-master/src -I/home/bruno/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/home/bruno/dev/advRendering/newShaders/build/bin/effects -I/opt/Qt/5.5/gcc_64/include -I/opt/Qt/5.5/gcc_64/include/QtOpenGL -I/opt/Qt/5.5/gcc_64/include/QtWidgets -I/opt/Qt/5.5/gcc_64/include/QtGui -I/opt/Qt/5.5/gcc_64/include/QtCore glwidget.h -o ../build/moc/moc_glwidget.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1918,6 +1923,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		/opt/Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../tucano-master/effects/phongshader.hpp \
+		../build/bin/effects/phongcompleteshader.h \
+		../build/bin/effects/shownormals.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt/5.5/gcc_64/include/QtCore/qcoreapplication.h \
@@ -2269,6 +2276,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		/opt/Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../tucano-master/effects/phongshader.hpp \
+		../build/bin/effects/phongcompleteshader.h \
+		../build/bin/effects/shownormals.h \
 		ui_mainwindow.h \
 		/opt/Qt/5.5/gcc_64/include/QtCore/QVariant \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/QAction \
@@ -2638,7 +2647,9 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		/opt/Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		/opt/Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		/opt/Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
-		../../tucano-master/effects/phongshader.hpp
+		../../tucano-master/effects/phongshader.hpp \
+		../build/bin/effects/phongcompleteshader.h \
+		../build/bin/effects/shownormals.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/glwidget.o glwidget.cpp
 
 ../build/obj/moc_mainwindow.o: ../build/moc/moc_mainwindow.cpp 

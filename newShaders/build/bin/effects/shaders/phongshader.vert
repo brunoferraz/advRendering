@@ -41,4 +41,5 @@ void main(void)
     else
         color = default_color;
 
+    colorVert = color;
 }

@@ -39,13 +39,14 @@ class Phong : public Effect
 
 private:
 
+
+
+public:
     /// Phong Shader
     Shader phong_shader;
 
-	/// Default color
-	Eigen::Vector4f default_color;
-
-public:
+        /// Default color
+    Eigen::Vector4f default_color;
 
     /**
      * @brief Default constructor.

@@ -5,6 +5,8 @@
 #include <utils/qttrackballwidget.hpp>
 
 #include <phongshader.hpp>
+#include <phongcompleteshader.h>
+#include <shownormals.h>
 
 class GLWidget : public Tucano::QtTrackballWidget
 {
@@ -18,7 +20,8 @@ public:
 signals:
 
 private:
-    Effects::Phong *phong;
+    Effects::PhongCompleteShader *phong;
+    Effects::ShowNormals *showNormals;
 
 public slots:
 };
