@@ -18,14 +18,18 @@ void PointCloud::loadParticles(Emitter &e)
 {
     //reset();
     vector<Eigen::Vector4f> vl;
+    velocity.clear();
     if(!e.particleList.empty()){
         for(int i = 0; i < e.particleList.size(); i++)
         {
             Eigen::Vector4f v = e.particleList.at(i)->getPosition();
             vl.push_back(v);
+            Eigen::Vector4f vel =  e.particleList.at(i)->velocity;
+            velocity.push_back(vel);
         }
     }
     loadVertices(vl);
+    createAttribute("in_Velocity", velocity);
 }
 
 void PointCloud::update()

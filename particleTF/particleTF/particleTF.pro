@@ -17,7 +17,7 @@ BUILDDIR = $$PWD/../build/
 
 LIBS += -lGLEW -lGLU
 
-INCLUDEPATH +=  $$TUCANO_PATH/src $$TUCANO_PATH/effects $$EIGEN_PATH $$BUILDDIR/bin/effects particleStuff
+INCLUDEPATH +=  $$TUCANO_PATH/src $$TUCANO_PATH/effects $$EIGEN_PATH $$BUILDDIR/effects particleStuff
 
 #OBJECTS_DIR =   $$BUILDDIR/obj
 #MOC_DIR =       $$BUILDDIR/moc
@@ -35,6 +35,8 @@ SOURCES += main.cpp\
     particleStuff/emitter.cpp
 
 HEADERS  += mainwindow.h \
+    $$BUILDDIR/effects/particleTF.hpp \
+    $$BUILDDIR/effects/phongshader.hpp \
     $$TUCANO_PATH/src/utils/qttrackballwidget.hpp \
     glwidget.h \
     particleStuff/pointcloud.h \
@@ -44,5 +46,7 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 OTHER_FILES += \
+    $$BUILDDIR/effects/shaders/particleTF.vert \
+    $$BUILDDIR/effects/shaders/particleTF.frag \
     $$BUILDDIR/effects/shaders/phongshader.vert \
     $$BUILDDIR/effects/shaders/phongshader.frag \

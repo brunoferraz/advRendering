@@ -8,6 +8,7 @@
 #include <pointcloud.h>
 #include <emitter.h>
 #include <QTimer>
+#include <particleTF.hpp>
 
 class GLWidget : public Tucano::QtTrackballWidget
 {
@@ -19,6 +20,8 @@ public:
     void paintGL();
 
     Effects::Phong *phong;
+    Effects::ParticleTF *particleShader;
+
     PointCloud pointCloud;
 
     Emitter emitter;

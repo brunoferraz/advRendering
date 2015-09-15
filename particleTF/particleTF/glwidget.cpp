@@ -14,10 +14,13 @@ void GLWidget::initialize()
 //    mesh.createParallelepiped(1, 1, 1);
 //    mesh.createQuad();
 
-    phong = new Effects::Phong();
-    phong->setShadersDir("./effects/shaders/");
-    phong->initialize();
+//    phong = new Effects::Phong();
+//    phong->setShadersDir("./effects/shaders/");
+//    phong->initialize();
 
+    particleShader = new Effects::ParticleTF();
+    particleShader->setShadersDir("./effects/shaders/");
+    particleShader->initialize();
 }
 
 void GLWidget::paintGL()
@@ -28,7 +31,7 @@ void GLWidget::paintGL()
 
     glEnable(GL_DEPTH_TEST);
     glPointSize(2);
-    phong->render(pointCloud, camera, light_trackball);
+    particleShader->render(pointCloud, camera, light_trackball);
 
     camera.render();
 }

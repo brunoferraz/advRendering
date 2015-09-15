@@ -12,6 +12,8 @@ public:
     PointCloud();
 
     vector<Eigen::Vector4f> v;
+    vector<Eigen::Vector4f> velocity;
+
 
     void loadParticles(vector<Particle *> &particlelist);
     void loadParticles(Emitter &e);
