@@ -34,6 +34,6 @@ Eigen::Vector4f Particle::getPosition()
 
 void Particle::update()
 {
-    translate(velocity);
+    //translate(velocity);
 }
 

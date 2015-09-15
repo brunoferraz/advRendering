@@ -48,6 +48,9 @@ private:
 
 public:
 
+    GLuint m_particleBuffer[2];
+    GLuint m_transformFeedback[2];
+
     /**
      * @brief Default constructor.
      */
@@ -68,6 +71,10 @@ public:
     {
         // searches in default shader directory (/shaders) for shader files phongShader.(vert,frag,geom,comp)
         loadShader(particletf_shader, "particleTF") ;
+
+        glGenTransformFeedbacks(2, m_transformFeedback);
+        glGenBuffers(2, m_particleBuffer);
+
     }
 
 	/**
@@ -89,6 +96,8 @@ public:
         Eigen::Vector4f viewport = camera.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
 
+        glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[0]);
+        glBeginTransformFeedback(GL_POINTS);
         particletf_shader.bind();
 
         // sets all uniform variables for the phong shader
@@ -106,6 +115,7 @@ public:
         mesh.render();
 
         particletf_shader.unbind();
+//        glEndTransformFeedback();
     }
 
 

@@ -29,13 +29,13 @@ void main(void)
 	mat4 normalMatrix = transpose(inverse(modelViewMatrix));
     normal = normalize(vec3(normalMatrix * vec4(in_Normal,0.0)).xyz);
 
-	vert = modelViewMatrix * in_Position;
+        vert = modelViewMatrix * (in_Position + in_Velocity);
 
 	depth = in_Position.z;
 
 	texCoords = in_TexCoords;
 
-	gl_Position = (projectionMatrix * modelViewMatrix) * in_Position;
+        gl_Position = (projectionMatrix * modelViewMatrix) * (in_Position + in_Velocity);
 
     if (has_color)
         color = in_Color;
