@@ -11,7 +11,7 @@ TARGET = particleTF
 TEMPLATE = app
 
 EIGEN_PATH  =  /usr/include/eigen3
-TUCANO_PATH = $$PWD/../../tucano-master
+TUCANO_PATH = $$PWD/../../../tucano
 
 BUILDDIR = $$PWD/../build/
 

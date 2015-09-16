@@ -8,7 +8,8 @@
 #include <phongcompleteshader.h>
 #include <shownormals.h>
 #include <goochshader.h>
-
+#include <ssfboshader.hpp>
+#include  <QDebug>
 
 class GLWidget : public Tucano::QtTrackballWidget
 {
@@ -26,6 +27,8 @@ private:
 
     Effects::PhongCompleteShader *phong;
     Effects::GoochShader *gooch;
+    Effects::SSFboShader *ssfboShadowMap;
+
 
 public slots:
 };

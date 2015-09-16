@@ -21,6 +21,8 @@ private slots:
 
     void on_showNormalButton_stateChanged(int arg1);
 
+    void on_pushButton_released();
+
 private:
     Ui::MainWindow *ui;
 };

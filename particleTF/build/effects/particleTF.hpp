@@ -48,8 +48,10 @@ private:
 
 public:
 
-    GLuint m_particleBuffer[2];
-    GLuint m_transformFeedback[2];
+    GLuint feedback[2];
+    GLuint posBuf[2];
+    GLuint velBuf[2];
+    GLuint startTime[2];
 
     /**
      * @brief Default constructor.
@@ -72,9 +74,10 @@ public:
         // searches in default shader directory (/shaders) for shader files phongShader.(vert,frag,geom,comp)
         loadShader(particletf_shader, "particleTF") ;
 
-        glGenTransformFeedbacks(2, m_transformFeedback);
-        glGenBuffers(2, m_particleBuffer);
+        const char * outputNames[] = { "Position", "Velocity" };
+        particletf_shader.initializeTF(2, outputNames);
 
+        glGenTransformFeedbacks(2, feedback);
     }
 
 	/**
@@ -92,13 +95,25 @@ public:
      */
     void render (PointCloud& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
-
         Eigen::Vector4f viewport = camera.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
 
-        glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[0]);
-        glBeginTransformFeedback(GL_POINTS);
         particletf_shader.bind();
+
+        glUniformSubroutinesuiv(GL_VERTEX_SHADER, 1, 0);
+
+        // Transform feedback 0
+        glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, feedback[0]);
+        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,0,mesh.getAttribute("in_Position")->getBufferID());
+        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,1,mesh.getAttribute("in_Velocity")->getBufferID());
+        // posBuf[0] -> mesh.getAttribute("in_Position")->getBufferID()
+
+        // Transform feedback 1
+        glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, feedback[1]);
+        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,0,mesh.getAttribute("in_Position")->getBufferID());
+        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,1,mesh.getAttribute("in_Velocity")->getBufferID());
+//        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,1,velBuf[1]);
+//        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,2,startTime[1]);
 
         // sets all uniform variables for the phong shader
         particletf_shader.setUniform("projectionMatrix", camera.getProjectionMatrix());
@@ -108,6 +123,11 @@ public:
         particletf_shader.setUniform("has_color", mesh.hasAttribute("in_Color"));
         particletf_shader.setUniform("default_color", default_color);
 
+        // Disable rendering
+        glEnable(GL_RASTERIZER_DISCARD);
+        int drawBuf = 0;
+        // Bind the feedback object for the buffers to be drawn next
+        glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, feedback[drawBuf]);
 
         mesh.setAttributeLocation(particletf_shader);
 

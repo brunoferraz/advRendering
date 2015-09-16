@@ -8,7 +8,7 @@ QT       += core gui opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-EIGEN_PATH  =  /usr/local/include/eigen3
+EIGEN_PATH  =  /usr/include/eigen3
 
 TUCANO_PATH = $$PWD/../tucano-master
 

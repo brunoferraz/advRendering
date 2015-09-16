@@ -10,19 +10,12 @@ in float depth;
 out vec4 out_Color;
 
 uniform mat4 lightViewMatrix;
+uniform sampler2D ParticleTex;
+
+//layout (location = 0) out vec4 FragColor;
 
 void main(void)
 {
-    vec3 lightDirection = (lightViewMatrix * vec4(0.0, 0.0, 1.0, 0.0)).xyz;
-    lightDirection = normalize(lightDirection);
-
-    vec3 lightReflection = reflect(-lightDirection, normal);
-    vec3 eyeDirection = -normalize(vert.xyz);
-    float shininess = 100.0;
-
-    vec4 ambientLight = color * 0.5;
-    vec4 diffuseLight = color * 0.4 * max(dot(lightDirection, normal),0.0);
-    vec4 specularLight = vec4(1.0) *  max(pow(dot(lightReflection, eyeDirection), shininess),0.0);
-
-    out_Color = vec4(ambientLight.xyz + diffuseLight.xyz + specularLight.xyz,1.0);
+//    FragColor = texture2D(ParticleTex, gl_PointCoord);
+    out_Color = texture2D(ParticleTex, gl_PointCoord);
 }

@@ -24,6 +24,10 @@ void GLWidget::initialize()
     gooch = new Effects::GoochShader();
     gooch->setShadersDir("./effects/shaders/");
     gooch->initialize();
+
+    ssfboShadowMap = new Effects::SSFboShader();
+    ssfboShadowMap->setShadersDir("./effects/shaders/");
+    ssfboShadowMap->initialize();
 }
 
 void GLWidget::paintGL()
@@ -33,11 +37,24 @@ void GLWidget::paintGL()
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
     glEnable(GL_DEPTH_TEST);
-//    phong->render(mesh, camera, light_trackball);
-    gooch->render(mesh, camera, light_trackball);
+    switch (Interface::renderType) {
+    case Interface::PHONG:
+        phong->render(mesh, camera, light_trackball);
+        break;
+    case Interface::GOOCH:
+        gooch->render(mesh, camera, light_trackball);
+        break;
+    case Interface::SHADOWMAP:
+        ssfboShadowMap->render(mesh, camera, light_trackball);
+        break;
+    default:
+        break;
+    }
+
 
 //    glEnable(GL_CULL_FACE);
 //    glCullFace(GL_FRONT);
+
     if(Interface::showNormals){
         showNormals->render(mesh, camera, light_trackball);
     }

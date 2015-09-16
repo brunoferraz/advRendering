@@ -24,20 +24,82 @@
      </rect>
     </property>
    </widget>
-   <widget class="QCheckBox" name="showNormalButton">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>270</y>
-      <width>121</width>
-      <height>22</height>
+      <y>10</y>
+      <width>141</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Render</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>119</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="render_Phong">
+        <property name="text">
+         <string>Phong</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="render_Gooch">
+        <property name="text">
+         <string>Gooch</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="render_ShadowMap">
+        <property name="text">
+         <string>Shadow Map</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QCheckBox" name="showNormalButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>show normals</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>260</y>
+      <width>161</width>
+      <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>show normals</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
+     <string>Reload Shader</string>
     </property>
    </widget>
   </widget>

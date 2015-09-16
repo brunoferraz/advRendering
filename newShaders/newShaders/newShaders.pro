@@ -13,12 +13,13 @@ TEMPLATE = app
 
 EIGEN_PATH  =  /usr/include/eigen3
 TUCANO_PATH = $$PWD/../../tucano-master
+SHADERS_PATH = $$PWD/../../build
 
 BUILDDIR = $$PWD/../build/
 
 LIBS += -lGLEW -lGLU
 
-INCLUDEPATH +=  $$TUCANO_PATH/src $$TUCANO_PATH/effects $$EIGEN_PATH $$BUILDDIR/bin/effects
+INCLUDEPATH +=  $$TUCANO_PATH/src $$TUCANO_PATH/effects $$EIGEN_PATH $$BUILDDIR/bin/effects $$SHADERS_PATH
 
 #OBJECTS_DIR =   $$BUILDDIR/obj
 #MOC_DIR =       $$BUILDDIR/moc
@@ -34,21 +35,30 @@ SOURCES += main.cpp\
     interface.cpp
 
 HEADERS  += mainwindow.h \
-        $$TUCANO_PATH/src/utils/qttrackballwidget.hpp \
-        $$BUILDDIR/bin/effects/phongshader.hpp \
-        $$BUILDDIR/bin/effects/phongcompleteshader.h \
-        $$BUILDDIR/bin/effects/goochshader.h \
     glwidget.h \
-    interface.h
+    interface.h \
+        $$TUCANO_PATH/src/utils/qttrackballwidget.hpp \
+        $$DESTDIR/effects/phongshader.hpp \
+        $$DESTDIR/effects/phongcompleteshader.h \
+        $$DESTDIR/effects/goochshader.h \
+        $$DESTDIR/effects/ssfboshader.hpp \
 
 FORMS    += mainwindow.ui
 
 OTHER_FILES += \
-    $$BUILDDIR/bin/effects/shaders/phongCompleteShader.vert \
-    $$BUILDDIR/bin/effects/shaders/phongCompleteShader.frag \
-    $$BUILDDIR/bin/effects/shaders/phongCompleteShader.geom \
-    $$BUILDDIR/bin/effects/shaders/shownormals.vert \
-    $$BUILDDIR/bin/effects/shaders/shownormals.frag \
-    $$BUILDDIR/bin/effects/shaders/shownormals.geom \
-    $$BUILDDIR/bin/effects/shaders/gooch.vert \
-    $$BUILDDIR/bin/effects/shaders/gooch.frag \
+    $$DESTDIR/effects/shaders/phongCompleteShader.vert \
+    $$DESTDIR/effects/shaders/phongCompleteShader.frag \
+    $$DESTDIR/effects/shaders/phongCompleteShader.geom \
+    $$DESTDIR/effects/shaders/shownormals.vert \
+    $$DESTDIR/effects/shaders/shownormals.frag \
+    $$DESTDIR/effects/shaders/shownormals.geom \
+    $$DESTDIR/effects/shaders/gooch.vert \
+    $$DESTDIR/effects/shaders/gooch.frag \
+    $$DESTDIR/effects/shaders/depthMap.vert \
+    $$DESTDIR/effects/shaders/depthMap.frag \
+    $$DESTDIR/effects/shaders/shadowMap.vert \
+    $$DESTDIR/effects/shaders/shadowMap.frag \
+    $$DESTDIR/effects/shaders/shadowMapClean.vert \
+    $$DESTDIR/effects/shaders/shadowMapClean.frag \
+    $$DESTDIR/effects/shaders/ssfboshader.vert \
+    $$DESTDIR/effects/shaders/ssfboshader.frag \

@@ -1,4 +1,7 @@
-#version 150
+#version 400
+
+subroutine void RenderPassType();
+subroutine uniform RenderPassType RenderPass;
 
 in vec4 in_Position;
 in vec3 in_Normal;
@@ -22,25 +25,20 @@ uniform vec4 default_color;
 // if attribute in_Color exists or not
 uniform bool has_color;
 
+out vec3 Position;
+out vec3 Velocity;
+
+subroutine (RenderPassType)
+void update(){
+    Position = in_Position.xyz + in_Velocity.xyz;
+}
+subroutine (RenderPassType)
+void render(){
+    mat4 modelView = modelMatrix * viewMatrix;
+    gl_Position = modelView * projectionMatrix * in_Position;
+}
+
 void main(void)
 {
-	mat4 modelViewMatrix = viewMatrix * modelMatrix;
-
-	mat4 normalMatrix = transpose(inverse(modelViewMatrix));
-    normal = normalize(vec3(normalMatrix * vec4(in_Normal,0.0)).xyz);
-
-        vert = modelViewMatrix * (in_Position + in_Velocity);
-
-	depth = in_Position.z;
-
-	texCoords = in_TexCoords;
-
-        gl_Position = (projectionMatrix * modelViewMatrix) * (in_Position + in_Velocity);
-
-    if (has_color)
-        color = in_Color;
-    else
-        color = default_color;
-
-    ///voltar com nova posiacao para vertice
+    RenderPass();
 }

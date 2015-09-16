@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -DTUCANODEBUG -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../tucano-master/src -I../../tucano-master/effects -I/usr/include/eigen3 -I../build/effects -IparticleStuff -I../../../../Qt/5.5/gcc_64/include -I../../../../Qt/5.5/gcc_64/include/QtOpenGL -I../../../../Qt/5.5/gcc_64/include/QtWidgets -I../../../../Qt/5.5/gcc_64/include/QtGui -I../../../../Qt/5.5/gcc_64/include/QtCore -I. -I. -I../../../../Qt/5.5/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../../../tucano/src -I../../../tucano/effects -I/usr/include/eigen3 -I../build/effects -IparticleStuff -I../../../../Qt/5.5/gcc_64/include -I../../../../Qt/5.5/gcc_64/include/QtOpenGL -I../../../../Qt/5.5/gcc_64/include/QtWidgets -I../../../../Qt/5.5/gcc_64/include/QtGui -I../../../../Qt/5.5/gcc_64/include/QtCore -I. -I. -I../../../../Qt/5.5/gcc_64/mkspecs/linux-g++
 QMAKE         = /lcg/home/brferraz/Qt/5.5/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -198,7 +198,7 @@ DIST          = ../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		particleTF.pro mainwindow.h \
 		../build/effects/particleTF.hpp \
 		../build/effects/phongshader.hpp \
-		../../tucano-master/src/utils/qttrackballwidget.hpp \
+		../../../tucano/src/utils/qttrackballwidget.hpp \
 		glwidget.h \
 		particleStuff/pointcloud.h \
 		particleStuff/particle.h \
@@ -524,7 +524,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h ../build/effects/particleTF.hpp ../build/effects/phongshader.hpp ../../tucano-master/src/utils/qttrackballwidget.hpp glwidget.h particleStuff/pointcloud.h particleStuff/particle.h particleStuff/emitter.h $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h ../build/effects/particleTF.hpp ../build/effects/phongshader.hpp ../../../tucano/src/utils/qttrackballwidget.hpp glwidget.h particleStuff/pointcloud.h particleStuff/particle.h particleStuff/emitter.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp mainwindow.cpp glwidget.cpp particleStuff/pointcloud.cpp particleStuff/particle.cpp particleStuff/emitter.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
@@ -658,12 +658,12 @@ moc_mainwindow.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qicon.h \
 		mainwindow.h
-	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF -I/lcg/home/brferraz/dev/advRendering/tucano-master/src -I/lcg/home/brferraz/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/particleTF/build/effects -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF/particleStuff -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
+	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF -I/lcg/home/brferraz/dev/tucano/src -I/lcg/home/brferraz/dev/tucano/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/particleTF/build/effects -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF/particleStuff -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
-moc_qttrackballwidget.cpp: ../../tucano-master/src/utils/objimporter.hpp \
-		../../tucano-master/src/mesh.hpp \
-		../../tucano-master/src/model.hpp \
-		../../tucano-master/src/utils/misc.hpp \
+moc_qttrackballwidget.cpp: ../../../tucano/src/utils/objimporter.hpp \
+		../../../tucano/src/mesh.hpp \
+		../../../tucano/src/model.hpp \
+		../../../tucano/src/utils/misc.hpp \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -861,17 +861,17 @@ moc_qttrackballwidget.cpp: ../../tucano-master/src/utils/objimporter.hpp \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h \
-		../../tucano-master/src/shader.hpp \
-		../../tucano-master/src/utils/plyimporter.hpp \
-		../../tucano-master/src/utils/rply.hpp \
-		../../tucano-master/src/tucano.hpp \
-		../../tucano-master/src/effect.hpp \
-		../../tucano-master/src/bufferobject.hpp \
-		../../tucano-master/src/texture.hpp \
-		../../tucano-master/src/texturemanager.hpp \
-		../../tucano-master/src/framebuffer.hpp \
-		../../tucano-master/src/utils/trackball.hpp \
-		../../tucano-master/src/camera.hpp \
+		../../../tucano/src/shader.hpp \
+		../../../tucano/src/utils/plyimporter.hpp \
+		../../../tucano/src/utils/rply.hpp \
+		../../../tucano/src/tucano.hpp \
+		../../../tucano/src/effect.hpp \
+		../../../tucano/src/bufferobject.hpp \
+		../../../tucano/src/texture.hpp \
+		../../../tucano/src/texturemanager.hpp \
+		../../../tucano/src/framebuffer.hpp \
+		../../../tucano/src/utils/trackball.hpp \
+		../../../tucano/src/camera.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
@@ -993,8 +993,8 @@ moc_qttrackballwidget.cpp: ../../tucano-master/src/utils/objimporter.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
-		../../tucano-master/src/utils/qttrackballwidget.hpp
-	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF -I/lcg/home/brferraz/dev/advRendering/tucano-master/src -I/lcg/home/brferraz/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/particleTF/build/effects -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF/particleStuff -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore ../../tucano-master/src/utils/qttrackballwidget.hpp -o moc_qttrackballwidget.cpp
+		../../../tucano/src/utils/qttrackballwidget.hpp
+	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF -I/lcg/home/brferraz/dev/tucano/src -I/lcg/home/brferraz/dev/tucano/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/particleTF/build/effects -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF/particleStuff -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore ../../../tucano/src/utils/qttrackballwidget.hpp -o moc_qttrackballwidget.cpp
 
 moc_glwidget.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
@@ -1098,11 +1098,11 @@ moc_glwidget.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
-		../../tucano-master/src/utils/qttrackballwidget.hpp \
-		../../tucano-master/src/utils/objimporter.hpp \
-		../../tucano-master/src/mesh.hpp \
-		../../tucano-master/src/model.hpp \
-		../../tucano-master/src/utils/misc.hpp \
+		../../../tucano/src/utils/qttrackballwidget.hpp \
+		../../../tucano/src/utils/objimporter.hpp \
+		../../../tucano/src/mesh.hpp \
+		../../../tucano/src/model.hpp \
+		../../../tucano/src/utils/misc.hpp \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -1300,17 +1300,17 @@ moc_glwidget.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h \
-		../../tucano-master/src/shader.hpp \
-		../../tucano-master/src/utils/plyimporter.hpp \
-		../../tucano-master/src/utils/rply.hpp \
-		../../tucano-master/src/tucano.hpp \
-		../../tucano-master/src/effect.hpp \
-		../../tucano-master/src/bufferobject.hpp \
-		../../tucano-master/src/texture.hpp \
-		../../tucano-master/src/texturemanager.hpp \
-		../../tucano-master/src/framebuffer.hpp \
-		../../tucano-master/src/utils/trackball.hpp \
-		../../tucano-master/src/camera.hpp \
+		../../../tucano/src/shader.hpp \
+		../../../tucano/src/utils/plyimporter.hpp \
+		../../../tucano/src/utils/rply.hpp \
+		../../../tucano/src/tucano.hpp \
+		../../../tucano/src/effect.hpp \
+		../../../tucano/src/bufferobject.hpp \
+		../../../tucano/src/texture.hpp \
+		../../../tucano/src/texturemanager.hpp \
+		../../../tucano/src/framebuffer.hpp \
+		../../../tucano/src/utils/trackball.hpp \
+		../../../tucano/src/camera.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
@@ -1331,7 +1331,7 @@ moc_glwidget.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
-		../../tucano-master/effects/phongshader.hpp \
+		../../../tucano/effects/phongshader.hpp \
 		particleStuff/pointcloud.h \
 		particleStuff/particle.h \
 		/usr/include/eigen3/Eigen/Eigen \
@@ -1341,7 +1341,7 @@ moc_glwidget.cpp: ../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qbasictimer.h \
 		../build/effects/particleTF.hpp \
 		glwidget.h
-	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF -I/lcg/home/brferraz/dev/advRendering/tucano-master/src -I/lcg/home/brferraz/dev/advRendering/tucano-master/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/particleTF/build/effects -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF/particleStuff -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore glwidget.h -o moc_glwidget.cpp
+	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF -I/lcg/home/brferraz/dev/tucano/src -I/lcg/home/brferraz/dev/tucano/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/particleTF/build/effects -I/lcg/home/brferraz/dev/advRendering/particleTF/particleTF/particleStuff -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore glwidget.h -o moc_glwidget.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1452,11 +1452,11 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
-		../../tucano-master/src/utils/qttrackballwidget.hpp \
-		../../tucano-master/src/utils/objimporter.hpp \
-		../../tucano-master/src/mesh.hpp \
-		../../tucano-master/src/model.hpp \
-		../../tucano-master/src/utils/misc.hpp \
+		../../../tucano/src/utils/qttrackballwidget.hpp \
+		../../../tucano/src/utils/objimporter.hpp \
+		../../../tucano/src/mesh.hpp \
+		../../../tucano/src/model.hpp \
+		../../../tucano/src/utils/misc.hpp \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -1654,17 +1654,17 @@ ui_mainwindow.h: mainwindow.ui \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h \
-		../../tucano-master/src/shader.hpp \
-		../../tucano-master/src/utils/plyimporter.hpp \
-		../../tucano-master/src/utils/rply.hpp \
-		../../tucano-master/src/tucano.hpp \
-		../../tucano-master/src/effect.hpp \
-		../../tucano-master/src/bufferobject.hpp \
-		../../tucano-master/src/texture.hpp \
-		../../tucano-master/src/texturemanager.hpp \
-		../../tucano-master/src/framebuffer.hpp \
-		../../tucano-master/src/utils/trackball.hpp \
-		../../tucano-master/src/camera.hpp \
+		../../../tucano/src/shader.hpp \
+		../../../tucano/src/utils/plyimporter.hpp \
+		../../../tucano/src/utils/rply.hpp \
+		../../../tucano/src/tucano.hpp \
+		../../../tucano/src/effect.hpp \
+		../../../tucano/src/bufferobject.hpp \
+		../../../tucano/src/texture.hpp \
+		../../../tucano/src/texturemanager.hpp \
+		../../../tucano/src/framebuffer.hpp \
+		../../../tucano/src/utils/trackball.hpp \
+		../../../tucano/src/camera.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
@@ -1685,7 +1685,7 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
-		../../tucano-master/effects/phongshader.hpp \
+		../../../tucano/effects/phongshader.hpp \
 		particleStuff/pointcloud.h \
 		particleStuff/particle.h \
 		/usr/include/eigen3/Eigen/Eigen \
@@ -1960,11 +1960,11 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/QWidget \
 		glwidget.h \
-		../../tucano-master/src/utils/qttrackballwidget.hpp \
-		../../tucano-master/src/utils/objimporter.hpp \
-		../../tucano-master/src/mesh.hpp \
-		../../tucano-master/src/model.hpp \
-		../../tucano-master/src/utils/misc.hpp \
+		../../../tucano/src/utils/qttrackballwidget.hpp \
+		../../../tucano/src/utils/objimporter.hpp \
+		../../../tucano/src/mesh.hpp \
+		../../../tucano/src/model.hpp \
+		../../../tucano/src/utils/misc.hpp \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -2162,17 +2162,17 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h \
-		../../tucano-master/src/shader.hpp \
-		../../tucano-master/src/utils/plyimporter.hpp \
-		../../tucano-master/src/utils/rply.hpp \
-		../../tucano-master/src/tucano.hpp \
-		../../tucano-master/src/effect.hpp \
-		../../tucano-master/src/bufferobject.hpp \
-		../../tucano-master/src/texture.hpp \
-		../../tucano-master/src/texturemanager.hpp \
-		../../tucano-master/src/framebuffer.hpp \
-		../../tucano-master/src/utils/trackball.hpp \
-		../../tucano-master/src/camera.hpp \
+		../../../tucano/src/shader.hpp \
+		../../../tucano/src/utils/plyimporter.hpp \
+		../../../tucano/src/utils/rply.hpp \
+		../../../tucano/src/tucano.hpp \
+		../../../tucano/src/effect.hpp \
+		../../../tucano/src/bufferobject.hpp \
+		../../../tucano/src/texture.hpp \
+		../../../tucano/src/texturemanager.hpp \
+		../../../tucano/src/framebuffer.hpp \
+		../../../tucano/src/utils/trackball.hpp \
+		../../../tucano/src/camera.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
@@ -2193,7 +2193,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
-		../../tucano-master/effects/phongshader.hpp \
+		../../../tucano/effects/phongshader.hpp \
 		particleStuff/pointcloud.h \
 		particleStuff/particle.h \
 		/usr/include/eigen3/Eigen/Eigen \
@@ -2307,11 +2307,11 @@ glwidget.o: glwidget.cpp glwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qtouchdevice.h \
-		../../tucano-master/src/utils/qttrackballwidget.hpp \
-		../../tucano-master/src/utils/objimporter.hpp \
-		../../tucano-master/src/mesh.hpp \
-		../../tucano-master/src/model.hpp \
-		../../tucano-master/src/utils/misc.hpp \
+		../../../tucano/src/utils/qttrackballwidget.hpp \
+		../../../tucano/src/utils/objimporter.hpp \
+		../../../tucano/src/mesh.hpp \
+		../../../tucano/src/model.hpp \
+		../../../tucano/src/utils/misc.hpp \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -2509,17 +2509,17 @@ glwidget.o: glwidget.cpp glwidget.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h \
-		../../tucano-master/src/shader.hpp \
-		../../tucano-master/src/utils/plyimporter.hpp \
-		../../tucano-master/src/utils/rply.hpp \
-		../../tucano-master/src/tucano.hpp \
-		../../tucano-master/src/effect.hpp \
-		../../tucano-master/src/bufferobject.hpp \
-		../../tucano-master/src/texture.hpp \
-		../../tucano-master/src/texturemanager.hpp \
-		../../tucano-master/src/framebuffer.hpp \
-		../../tucano-master/src/utils/trackball.hpp \
-		../../tucano-master/src/camera.hpp \
+		../../../tucano/src/shader.hpp \
+		../../../tucano/src/utils/plyimporter.hpp \
+		../../../tucano/src/utils/rply.hpp \
+		../../../tucano/src/tucano.hpp \
+		../../../tucano/src/effect.hpp \
+		../../../tucano/src/bufferobject.hpp \
+		../../../tucano/src/texture.hpp \
+		../../../tucano/src/texturemanager.hpp \
+		../../../tucano/src/framebuffer.hpp \
+		../../../tucano/src/utils/trackball.hpp \
+		../../../tucano/src/camera.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
 		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
@@ -2540,7 +2540,7 @@ glwidget.o: glwidget.cpp glwidget.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdir.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
-		../../tucano-master/effects/phongshader.hpp \
+		../../../tucano/effects/phongshader.hpp \
 		particleStuff/pointcloud.h \
 		particleStuff/particle.h \
 		/usr/include/eigen3/Eigen/Eigen \
@@ -2552,9 +2552,9 @@ glwidget.o: glwidget.cpp glwidget.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o glwidget.o glwidget.cpp
 
 pointcloud.o: particleStuff/pointcloud.cpp particleStuff/pointcloud.h \
-		../../tucano-master/src/mesh.hpp \
-		../../tucano-master/src/model.hpp \
-		../../tucano-master/src/utils/misc.hpp \
+		../../../tucano/src/mesh.hpp \
+		../../../tucano/src/model.hpp \
+		../../../tucano/src/utils/misc.hpp \
 		/usr/include/eigen3/Eigen/Dense \
 		/usr/include/eigen3/Eigen/Core \
 		/usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -2752,7 +2752,7 @@ pointcloud.o: particleStuff/pointcloud.cpp particleStuff/pointcloud.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h \
 		/usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h \
-		../../tucano-master/src/shader.hpp \
+		../../../tucano/src/shader.hpp \
 		particleStuff/particle.h \
 		/usr/include/eigen3/Eigen/Eigen \
 		particleStuff/emitter.h

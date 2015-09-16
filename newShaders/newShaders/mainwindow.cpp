@@ -8,11 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    glwidget = new GLWidget(this);
-//    glwidget->resize(this->width(), this->height());
-//    glwidget->initialize();
     ui->widget->initialize();
-
 }
 
 MainWindow::~MainWindow()
@@ -23,5 +19,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_showNormalButton_stateChanged(int arg1)
 {
     Interface::showNormals = arg1;
+    ui->widget->update();
+}
+
+void MainWindow::on_pushButton_released()
+{
+    if(ui->render_Phong->isChecked()) Interface::renderType = Interface::PHONG;
+    if(ui->render_ShadowMap->isChecked()) Interface::renderType = Interface::SHADOWMAP;
+    if(ui->render_Gooch->isChecked()) Interface::renderType = Interface::GOOCH;
     ui->widget->update();
 }
