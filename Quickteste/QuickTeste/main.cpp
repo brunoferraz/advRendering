@@ -1,47 +1,84 @@
+#include <GL/glew.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <stdio.h>
 #include <math.h>
 #include <GL/glut.h>
 #include <stdlib.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform2.hpp>
+#include <iostream>
+#include <stdio.h>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
 
 GLuint theTorus;
 
-/* Draw a torus */
-static void torus(int numc, int numt)
+/* Create display list with Torus and initialize state*/
+const void loadShaderAsString(const char* file)
 {
-   int i, j, k;
-   double s, t, x, y, z, twopi;
-
-   twopi = 2 * (double)M_PI;
-   for (i = 0; i < numc; i++) {
-      glBegin(GL_QUAD_STRIP);
-      for (j = 0; j <= numt; j++) {
-         for (k = 1; k >= 0; k--) {
-            s = (i + k) % numc + 0.5;
-            t = j % numt;
-
-            x = (1+.1*cos(s*twopi/numc))*cos(t*twopi/numt);
-            y = (1+.1*cos(s*twopi/numc))*sin(t*twopi/numt);
-            z = .1 * sin(s * twopi / numc);
-            glVertex3f(x, y, z);
-         }
-      }
-      glEnd();
-   }
+//   std::string str;
+//   std::ifstream shaderStream(file, std::ios::in);
+//   if(shaderStream.is_open())
+//   {
+//        std::string line = "";
+//        while(getline(shaderStream, line))
+//        {
+//            str += "\n" + line;
+//        }
+//        shaderStream.close();
+//        std::cout << str << std::endl;
+//   }
 }
 
-/* Create display list with Torus and initialize state*/
+void initShader()
+{
+    GLuint vertShader = glCreateShader(GL_VERTEX_SHADER);
+    if(vertShader == 0){
+        std::cout << "error creating vertex Shader" << std::endl;
+    }
+//    const GLchar *shaderCode = loadShaderAsString("./novo.txt");
+//    std::cout << shaderCode << std::endl;
+    loadShaderAsString("novo.txt");
+}
+
 static void init(void)
 {
-   theTorus = glGenLists (1);
-   glNewList(theTorus, GL_COMPILE);
-   torus(8, 25);
-   glEndList();
-
    glShadeModel(GL_FLAT);
    glClearColor(0.0, 0.0, 0.0, 0.0);
+   GLenum err = glewInit();
+   if(GLEW_OK != err)
+   {
+       fprintf(stderr, "Error initializing GLEW: %s\n",
+       glewGetErrorString(err) );
+   }
+   const GLubyte *renderer      = glGetString(GL_RENDERER);
+   const GLubyte *vendor        = glGetString(GL_VENDOR);
+   const GLubyte *glslVersion   = glGetString(GL_SHADING_LANGUAGE_VERSION);
+//   const GLubyte *extensions    = glGetString(GL_EXTENSIONS);
+
+   GLint major, minor;
+   glGetIntegerv(GL_MAJOR_VERSION, &major);
+   glGetIntegerv(GL_MINOR_VERSION, &minor);
+
+   std::cout << renderer << std::endl;
+   std::cout << vendor << std::endl;
+   std::cout << glslVersion << std::endl;
+//   std::cout << major << std::endl;
+//   std::cout << minor << std::endl;
+//   std::cout << extensions << std::endl;
+
+//   GLint nExtensions;
+//   glGetIntegerv(GL_NUM_EXTENSIONS, &nExtensions);
+//   for( int i = 0; i < nExtensions; i++ )
+//   printf("%s\n", glGetStringi( GL_EXTENSIONS, i ) );
+
+   initShader();
+
 }
+
 
 void display(void)
 {
