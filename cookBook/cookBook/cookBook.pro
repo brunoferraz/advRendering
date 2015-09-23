@@ -17,10 +17,12 @@ LIBS += -lGLEW
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    glwidget.cpp
+    glwidget.cpp \
+    shader.cpp
 
 HEADERS  += mainwindow.h \
-    glwidget.h
+    glwidget.h \
+    shader.h
 
 FORMS    += mainwindow.ui
 

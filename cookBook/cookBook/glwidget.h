@@ -11,7 +11,7 @@
 #include <sstream>
 #include <QGLWidget>
 #include <QDebug>
-
+#include <shader.h>
 
 class GLWidget : public QGLWidget
 {
@@ -19,13 +19,7 @@ class GLWidget : public QGLWidget
 public:
     explicit GLWidget(QWidget *parent = 0);
 
-    const char *loadShaderAsString(const char* file);
-
-    GLuint prepareShader(std::string path, GLenum type);
-    void readAttributes();
-
-    GLuint programHandle;
-    GLuint vaoHandle;
+    Shader shader;
 
     void initializeGL();
     void paintGL();
