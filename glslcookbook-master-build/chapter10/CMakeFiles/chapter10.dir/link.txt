@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g -DNDEBUG    CMakeFiles/chapter10.dir/main.cpp.o CMakeFiles/chapter10.dir/scenemandelbrot.cpp.o CMakeFiles/chapter10.dir/scenecloth.cpp.o CMakeFiles/chapter10.dir/sceneparticles.cpp.o CMakeFiles/chapter10.dir/sceneedge.cpp.o  -o chapter10 -rdynamic ../ingredients/libingredients.a /usr/local/lib/libglfw3.a -lGL -lpthread -lXrandr -lXxf86vm -lXi -lrt 

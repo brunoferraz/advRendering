@@ -1,0 +1,11 @@
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/CMakeFiles/chapter01.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/CMakeFiles/chapter02.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/CMakeFiles/chapter03.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/CMakeFiles/chapter04.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/CMakeFiles/chapter05.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/CMakeFiles/chapter06.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/CMakeFiles/chapter07.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/CMakeFiles/chapter08.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/CMakeFiles/chapter09.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/CMakeFiles/chapter10.dir
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/CMakeFiles/ingredients.dir

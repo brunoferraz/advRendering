@@ -53,6 +53,8 @@ public:
 private:
     GLuint          programHandle;
     GLuint          vaoHandle;
+    GLuint          posBuf;
+    GLuint          vboHandle;
     bool            linked;
     std::string     logString;
     bool            debugStatus;

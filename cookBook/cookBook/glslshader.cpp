@@ -46,6 +46,8 @@ void GLSLShader::initialize()
     createVertexTFAttribute(0, "in_Vertex_Position", vdata);
     createVertexAttribute(1, "in_Vertex_Color", vdataColor);
 
+    link();
+
     printActiveAttribs();
 }
 
@@ -163,9 +165,9 @@ void GLSLShader::createVertexAttribute(GLuint location, const char *name, std::v
         temp++;
     }
 
-    GLuint vboHandle[1];
-    glGenBuffers(1, vboHandle);
-    glBindBuffer(GL_ARRAY_BUFFER, vboHandle[0]);
+
+    glGenBuffers(1, &vboHandle);
+    glBindBuffer(GL_ARRAY_BUFFER, vboHandle);
 
     glBufferData(GL_ARRAY_BUFFER, size * sizeof(float), dataB, GL_STATIC_DRAW);
 
@@ -179,19 +181,24 @@ void GLSLShader::createVertexAttribute(GLuint location, const char *name, std::v
     //glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
     glEnableVertexAttribArray(location);
 
-    glBindBuffer(GL_ARRAY_BUFFER, vboHandle[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, vboHandle);
     glVertexAttribPointer(location, 4, GL_FLOAT, GL_FALSE, 0, (GLubyte *)NULL);
 
 }
 
 void GLSLShader::createVertexTFAttribute(GLuint location, const char *name, std::vector<Eigen::Vector4f> &data)
 {
-    GLuint feedback[1];
-    GLuint posBuf[1];
+//    GLuint feedback[1];
 
-    glGenTransformFeedbacks(2, feedback);
-    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, feedback[0]);
-    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, posBuf[0]);
+//    glGenTransformFeedbacks(1, feedback);
+//    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, feedback[0]);
+//    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, posBuf);
+    int size = data.size() * 4;
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+
+    glBindBuffer(GL_TRANSFORM_FEEDBACK_BUFFER, buffer);
+    glBufferData(GL_TRANSFORM_FEEDBACK_BUFFER, size * sizeof(float), NULL, GL_DYNAMIC_COPY);
 
 }
 
@@ -223,6 +230,9 @@ void GLSLShader::printActiveAttribs()
 
 void GLSLShader::render()
 {
+//    glEnable(GL_RASTERIZER_DISCARD);
+//    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, )
+
     glBindVertexArray(vaoHandle);
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }

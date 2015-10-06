@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="GLSLCOOKBOOK" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\cmake\modules\;CMake Files\ingredients\;CMake Files\chapter01\;CMake Files\chapter02\;CMake Files\chapter03\;CMake Files\chapter04\;CMake Files\chapter05\;CMake Files\chapter06\;CMake Files\chapter07\;CMake Files\chapter08\;CMake Files\chapter09\;CMake Files\chapter10\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="ingredients">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/libingredients.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 ingredients" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="ingredients/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/libingredients.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 ingredients/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/ingredients/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter01">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/chapter01" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 chapter01" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter01/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/chapter01" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 chapter01/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter01/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter02">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/chapter02" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 chapter02" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter02/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/chapter02" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 chapter02/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter02/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter03">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/chapter03" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 chapter03" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter03/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/chapter03" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 chapter03/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter03/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter04">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/chapter04" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 chapter04" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter04/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/chapter04" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 chapter04/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter04/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter05">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/chapter05" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 chapter05" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter05/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/chapter05" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 chapter05/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter05/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter06">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/chapter06" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 chapter06" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter06/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/chapter06" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 chapter06/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter06/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter07">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/chapter07" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 chapter07" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter07/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/chapter07" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 chapter07/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter07/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter08">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/chapter08" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 chapter08" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter08/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/chapter08" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 chapter08/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter08/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter09">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/chapter09" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 chapter09" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter09/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/chapter09" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 chapter09/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter09/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter10">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/chapter10" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 chapter10" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="chapter10/fast">
+         <Option output="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/chapter10" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/4.8" />
+            <Add directory="/usr/include/c++/4.8/backward" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/4.8" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 chapter10/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/lcg/home/brferraz/dev/advRendering/glslcookbook-master-build/chapter10/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_attrib.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_debug.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_uniform.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_uniformblock.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/sceneads.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenediffuse.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenediscard.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/sceneflat.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenesubroutine.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenetwoside.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenedirectional.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenefog.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenemultilight.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/sceneperfragment.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenespot.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenetoon.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenealphatest.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenemultitex.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenenormalmap.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/sceneprojtex.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenereflectcube.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenerefractcube.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenerendertotex.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenesamplerobj.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenetexture.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/skybox.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/sceneblur.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenedeferred.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/sceneedge.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenegamma.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenehdrbloom.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenemsaa.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/sceneoit.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenetonemap.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenebezcurve.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenepointsprite.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenequadtess.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/sceneshadewire.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenesilhouette.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenetessteapot.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenetessteapotdepth.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/frustum.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/sceneao.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/scenejitter.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/scenepcf.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/sceneshadowmap.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/sceneshadowvolume.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/noisetex.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenedecay.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenenightvision.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenenoise.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenepaint.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenesky.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenewood.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/scenefire.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/sceneparticles.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/sceneparticlesfeedback.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/sceneparticlesinstanced.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/scenesmoke.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/scenewave.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/main.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/scenecloth.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/sceneedge.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/scenemandelbrot.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/sceneparticles.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/bmpreader.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/drawable.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/gl_core_4_4.c">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/glslprogram.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/glutils.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/tgaio.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbocube.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbomesh.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbomeshadj.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vboplane.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbosphere.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vboteapot.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vboteapotpatch.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbotorus.cpp">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_attrib.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_debug.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_uniform.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/scenebasic_uniformblock.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/sceneads.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenediffuse.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenediscard.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/sceneflat.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenesubroutine.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/scenetwoside.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenedirectional.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenefog.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenemultilight.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/sceneperfragment.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenespot.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/scenetoon.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenealphatest.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenemultitex.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenenormalmap.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/sceneprojtex.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenereflectcube.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenerefractcube.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenerendertotex.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenesamplerobj.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/scenetexture.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/skybox.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/sceneblur.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenedeferred.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/sceneedge.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenegamma.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenehdrbloom.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenemsaa.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/sceneoit.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/scenetonemap.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenebezcurve.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenepointsprite.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenequadtess.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/sceneshadewire.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenesilhouette.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenetessteapot.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/scenetessteapotdepth.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/frustum.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/sceneao.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/scenejitter.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/scenepcf.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/sceneshadowmap.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/sceneshadowvolume.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/noisetex.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenedecay.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenenightvision.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenenoise.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenepaint.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenesky.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/scenewood.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/scenefire.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/sceneparticles.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/sceneparticlesfeedback.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/sceneparticlesinstanced.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/scenesmoke.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/scenewave.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/scenecloth.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/sceneedge.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/scenemandelbrot.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/sceneparticles.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/bmpreader.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/drawable.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/gl_core_4_4.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/glslprogram.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/glutils.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/tgaio.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbocube.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbomesh.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbomeshadj.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vboplane.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbosphere.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vboteapot.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vboteapotpatch.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/vbotorus.h">
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/cmake/modules/FindGLM.cmake">
+          <Option virtualFolder="CMake Files\cmake\modules\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/cmake/modules/FindGLFW3.cmake">
+          <Option virtualFolder="CMake Files\cmake\modules\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\ingredients\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter01/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter01\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter02/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter02\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter03/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter03\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter04/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter04\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter05/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter05\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter06/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter06\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter07/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter07\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter08/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter08\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter09/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter09\" />
+      </Unit>
+      <Unit filename="/lcg/home/brferraz/dev/advRendering/glslcookbook-master/chapter10/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\chapter10\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

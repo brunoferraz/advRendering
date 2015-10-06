@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/gl_core_4_4.c
+stdlib.h
+-
+string.h
+-
+stddef.h
+-
+gl_core_4_4.h
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/gl_core_4_4.h
+mach-o/dyld.h
+-
+dlfcn.h
+-
+stdio.h
+-
+GL/glx.h
+-
+
+/lcg/home/brferraz/dev/advRendering/glslcookbook-master/ingredients/gl_core_4_4.h
+windows.h
+-
+windows.h
+-
+stddef.h
+-
+inttypes.h
+-
+inttypes.h
+-
+inttypes.h
+-
+stdint.h
+-
+stdint.h
+-
+inttypes.h
+-
+
