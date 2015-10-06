@@ -135,7 +135,6 @@ void Shader::createPerVertexAttribute(const char *name, float data[])
 
     glBindBuffer(GL_ARRAY_BUFFER, vboHandle[0]);
     glVertexAttribPointer(attribCounter, 3, GL_FLOAT, GL_FALSE, 0, (GLubyte *)NULL);
-
 }
 
 

@@ -28,12 +28,14 @@ void GLWidget::initializeGL()
         std::cout << "OPENGL  |  version: " << version << std::endl;
         std::cout << "GLSL    |  version: " << glslVersion << std::endl;
      }
-    shader.initialize();
+    program.initialize();
+//    shader.initialize();
 }
 
 void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-    shader.render();
+//    shader.render();
+    program.render();
 }
 

@@ -12,6 +12,7 @@
 #include <QGLWidget>
 #include <QDebug>
 #include <shader.h>
+#include <glslshader.h>
 
 class GLWidget : public QGLWidget
 {
@@ -20,6 +21,7 @@ public:
     explicit GLWidget(QWidget *parent = 0);
 
     Shader shader;
+    GLSLShader program;
 
     void initializeGL();
     void paintGL();

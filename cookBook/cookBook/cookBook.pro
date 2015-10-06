@@ -18,14 +18,18 @@ LIBS += -lGLEW
 SOURCES += main.cpp\
         mainwindow.cpp \
     glwidget.cpp \
-    shader.cpp
+    shader.cpp \
+    glslshader.cpp
 
 HEADERS  += mainwindow.h \
     glwidget.h \
-    shader.h
+    shader.h \
+    glslshader.h
 
 FORMS    += mainwindow.ui
 
 DISTFILES += \
     basic.vert \
-    basic.frag
+    basic.frag \
+    basicNew.vert \
+    basicNew.frag

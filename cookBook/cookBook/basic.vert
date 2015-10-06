@@ -10,4 +10,5 @@ void main()
 {
     Color = VertexColor;// + VertexPosition - VertexPosition;
     gl_Position = RotationMatrix * vec4( Novo, 1.0 );
+    //gl_Position = in_Vertex_Position;
 }

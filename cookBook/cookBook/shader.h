@@ -10,7 +10,7 @@
 #include <QDebug>
 #include <array>
 #include <vector>
-#include <Eigen/Eigen>
+#include <eigen3/Eigen/Eigen>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 class Shader
