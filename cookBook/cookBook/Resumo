@@ -1,0 +1,19 @@
+A VAO receive VBOS
+
+    Vertex Array Objects - holds various datas related to a collection of vertices.
+    Is a named object to group together certain state relating to vertex arrays.
+
+    For instance:
+        VAO {   -Position
+                -Color
+                -index
+                -normal}
+
+    Vertex Buffer Object - is a buffer wich is used to hold a vertex attribut array (aka vertex array).
+        Its related with memory and how openGL will deal with the data alocated here.
+        Here you need to know the size and how opengl will manipulate the information
+        https://www.quora.com/What-are-the-binding-points-in-OpenGL
+
+    For instance:
+        if a vbo is bound to GL_ARRAY_BUFFER, it means that you transfer the data to a buffer on GPU and not a pointer to client side.
+

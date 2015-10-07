@@ -32,4 +32,5 @@ DISTFILES += \
     basic.vert \
     basic.frag \
     basicNew.vert \
-    basicNew.frag
+    basicNew.frag \
+    Resumo
