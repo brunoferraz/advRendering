@@ -3,6 +3,7 @@
 GLSLShader::GLSLShader()
 {
     debugStatus = false;
+    m_isFirst = true;
 }
 
 void GLSLShader::initialize()
@@ -44,7 +45,7 @@ void GLSLShader::initialize()
 
 //    createVertexAttribute(0, "in_Vertex_Position", vdata);
     createVertexTFAttribute(0, "in_Vertex_Position", vdata);
-    createVertexAttribute(1, "in_Vertex_Color", vdataColor);
+//    createVertexAttribute(1, "in_Vertex_Color", vdataColor);
 
     link();
 
@@ -193,13 +194,35 @@ void GLSLShader::createVertexTFAttribute(GLuint location, const char *name, std:
 //    glGenTransformFeedbacks(1, feedback);
 //    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, feedback[0]);
 //    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, posBuf);
-    int size = data.size() * 4;
-    GLuint buffer;
-    glGenBuffers(1, &buffer);
 
-    glBindBuffer(GL_TRANSFORM_FEEDBACK_BUFFER, buffer);
-    glBufferData(GL_TRANSFORM_FEEDBACK_BUFFER, size * sizeof(float), NULL, GL_DYNAMIC_COPY);
+//    int size = data.size() * 4;
+//    GLuint buffer;
+//    glGenBuffers(1, &buffer);
 
+//    glBindBuffer(GL_TRANSFORM_FEEDBACK_BUFFER, buffer);
+//    glBufferData(GL_TRANSFORM_FEEDBACK_BUFFER, size * sizeof(float), NULL, GL_DYNAMIC_COPY);
+
+    size = data.size() * 4;
+    float *dataB = new float[size];
+    int temp =0;
+    for(int i =0; i < size; i+=4)
+    {
+        dataB[i] = data[temp][0];
+        dataB[i+1] = data[temp][1];
+        dataB[i+2] = data[temp][2];
+        dataB[i+3] = data[temp][3];
+        temp++;
+    }
+
+    glGenTransformFeedbacks(2, m_transformFeedback);
+    glGenBuffers(2, m_particleBuffer);
+
+    for (unsigned int i = 0; i < 2 ; i++) {
+       glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[i]);
+       glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[i]);
+       glBufferData(GL_ARRAY_BUFFER, size, dataB, GL_DYNAMIC_DRAW);
+       glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, m_particleBuffer[i]);
+    }
 }
 
 void GLSLShader::bindAttribLocation(GLuint location, const char *name)
@@ -232,9 +255,86 @@ void GLSLShader::render()
 {
 //    glEnable(GL_RASTERIZER_DISCARD);
 //    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, )
-
     glBindVertexArray(vaoHandle);
     glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+void GLSLShader::renderTF()
+{
+    float positionData[] = {
+        -0.8f,  -0.8f,  0.0f,
+        0.8f,   -0.8f,  0.0f,
+        0.0f,   0.8f,   0.0f };
+
+//    GLuint buffer;
+//    glGenBuffers(1, &buffer);
+//    glBindBuffer(GL_TRANSFORM_FEEDBACK_BUFFER, buffer);
+
+//    GLuint id;
+//    int bufferSize = 9 * sizeof(float);
+//    glGenTransformFeedbacks(1, &id);
+//    glBufferData(GL_TRANSFORM_FEEDBACK_BUFFER, bufferSize, NULL, GL_DYNAMIC_COPY);
+//    glBindBufferRange(GL_TRANSFORM_FEEDBACK_BUFFER, 0, buffer, 0, bufferSize);
+
+//    const char* vars[] = { "in_Vertex_Position" };
+//    glTransformFeedbackVaryings(programHandle, 1, vars, GL_INTERLEAVED_ATTRIBS );
+
+//    std::vector<Eigen::Vector4f> vdata;
+//    vdata.push_back(Eigen::Vector4f(-1, -1, 0, 1));
+//    vdata.push_back(Eigen::Vector4f(1, -1, 0, 1));
+//    vdata.push_back(Eigen::Vector4f(0, 1, 0, 1));
+//    createVertexAttribute(0, "in_Vertex_Position", vdata);
+
+//    link();
+//    glBeginTransformFeedback( GL_TRIANGLES );
+
+//    glBindVertexArray(vaoHandle);
+//    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+//    std::vector<Eigen::Vector4f> feedbackData;
+
+//    glEndTransformFeedback();
+//    glFlush();
+//  //  glGetBufferSubData( GL_TRANSFORM_FEEDBACK_BUFFER, 0, bufferSize, buffer  );
+
+//    glInvalidateBufferData( buffer );
+//    glDeleteTransformFeedbacks( 1, &id );
+    //std::cout << "Feedback data:" << std::endl << std::endl << feedbackData << std::endl;
+
+
+    //UPDATE
+    glEnable(GL_RASTERIZER_DISCARD);
+    glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currVB]);
+    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[m_currTFB]);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE, size ,(const GLvoid*)4); // position
+
+    glBeginTransformFeedback(GL_POINTS);
+
+    if (m_isFirst) {
+          glDrawArrays(GL_POINTS, 0, 1);
+          m_isFirst = false;
+      }
+      else {
+          glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currVB]);
+      }
+    glEndTransformFeedback();
+    glDisableVertexAttribArray(0);
+
+    //RENDER
+
+    glDisable(GL_RASTERIZER_DISCARD);
+    glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currTFB]);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, (const GLvoid*)4); // position
+
+    glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currTFB]);
+    glDisableVertexAttribArray(0);
+
+    m_currVB = m_currTFB;
+    m_currTFB = (m_currTFB + 1) & 0x1;
+
 }
 
 std::string GLSLShader::log()
@@ -246,4 +346,3 @@ bool GLSLShader::isDebug()
 {
     return debugStatus;
 }
-

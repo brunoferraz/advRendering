@@ -48,6 +48,7 @@ public:
     void printActiveAttribs();
 
     void render();
+    void renderTF();
 
     std::string log();
 private:
@@ -58,6 +59,13 @@ private:
     bool            linked;
     std::string     logString;
     bool            debugStatus;
+
+    unsigned int m_currVB;
+    unsigned int m_currTFB;
+    bool  m_isFirst;
+    int size;
+    GLuint m_particleBuffer[2];
+    GLuint m_transformFeedback[2];
 
     int getUniformLocation(const char *name);
     bool fileExists(const std::string & fileName);
