@@ -32,6 +32,7 @@ public:
 
     void createVertexAttribute(GLuint location, const char *name, std::vector<Eigen::Vector4f> &data);
     void createVertexTFAttribute(GLuint location, const char *name, std::vector<Eigen::Vector4f> &data);
+    void createVertexTFAttribute2(const char *name);
     void bindAttribLocation( GLuint location, const char *name);
     void bindFragDataLocation( GLuint location, const char * name);
 

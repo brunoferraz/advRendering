@@ -4,6 +4,7 @@ GLSLShader::GLSLShader()
 {
     debugStatus = false;
     m_isFirst = true;
+
 }
 
 void GLSLShader::initialize()
@@ -27,11 +28,7 @@ void GLSLShader::initialize()
     glAttachShader( programHandle, fragmentShader );
     glAttachShader( programHandle, vertexShader );
 
-    //#3 LINK PROGRAM
-    link();
-
-    //#4 USE PROGRAM
-    if(isLinked())use();
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
     std::vector<Eigen::Vector4f> vdata;
     vdata.push_back(Eigen::Vector4f(-1, -1, 0, 1));
@@ -43,11 +40,21 @@ void GLSLShader::initialize()
     vdataColor.push_back(Eigen::Vector4f(0, 1, 0, 1));
     vdataColor.push_back(Eigen::Vector4f(0, 0, 1, 1));
 
-//    createVertexAttribute(0, "in_Vertex_Position", vdata);
-    createVertexTFAttribute(0, "in_Vertex_Position", vdata);
+    createVertexAttribute(0, "in_Vertex_Position", vdata);
+//    createVertexTFAttribute(0, "in_Vertex_Position", vdata);
+    size = vdata.size() * 4;
+    createVertexTFAttribute2("Color");
 //    createVertexAttribute(1, "in_Vertex_Color", vdataColor);
 
+
+//////////////////////////////////////////////////////////////////////
+
+
+    //#3 LINK PROGRAM
     link();
+
+    //#4 USE PROGRAM
+    if(isLinked())use();
 
     printActiveAttribs();
 }
@@ -225,6 +232,29 @@ void GLSLShader::createVertexTFAttribute(GLuint location, const char *name, std:
     }
 }
 
+void GLSLShader::createVertexTFAttribute2(const char *name)
+{
+    float colorData[] = {
+        1.0f,    0.0f,    0.0f, 1.0,
+        0.0f,    1.0f,    0.0f, 1.0,
+        0.0f,    0.0f,    1.0f, 1.0};
+
+     glGenBuffers(1, &m_transformFeedback[0]);
+
+     glBindBuffer(GL_ARRAY_BUFFER, m_transformFeedback[0]);
+     glBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat), colorData, GL_STATIC_DRAW);
+     glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+     //glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, m_transformFeedback[0]);
+     const char* vars[] = { name };
+     glTransformFeedbackVaryings( programHandle, 1, vars, GL_INTERLEAVED_ATTRIBS );
+
+     glBindBuffer(GL_ARRAY_BUFFER, m_transformFeedback[0]);
+     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+     glEnableVertexAttribArray(1);
+
+}
+
 void GLSLShader::bindAttribLocation(GLuint location, const char *name)
 {
     glBindAttribLocation(programHandle, location, name);
@@ -303,37 +333,72 @@ void GLSLShader::renderTF()
 
 
     //UPDATE
-    glEnable(GL_RASTERIZER_DISCARD);
-    glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currVB]);
-    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[m_currTFB]);
+//    glEnable(GL_RASTERIZER_DISCARD);
+//    glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currVB]);
+//    glBindTransformFeedback(GL_TRANSFORM_FEEDBACK, m_transformFeedback[m_currTFB]);
 
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE, size ,(const GLvoid*)4); // position
+//    glEnableVertexAttribArray(0);
+//    glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE, size ,(const GLvoid*)4); // position
+
+//    glBeginTransformFeedback(GL_POINTS);
+
+//    if (m_isFirst) {
+//          glDrawArrays(GL_POINTS, 0, 1);
+//          m_isFirst = false;
+//      }
+//      else {
+//          glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currVB]);
+//      }
+//    glEndTransformFeedback();
+//    glDisableVertexAttribArray(0);
+
+//    //RENDER
+
+//    glDisable(GL_RASTERIZER_DISCARD);
+//    glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currTFB]);
+//    glEnableVertexAttribArray(0);
+//    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, (const GLvoid*)4); // position
+
+//    glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currTFB]);
+//    glDisableVertexAttribArray(0);
+
+//    m_currVB = m_currTFB;
+//    m_currTFB = (m_currTFB + 1) & 0x1;
+
+//    glBindBuffer(GL_ARRAY_BUFFER, m_transformFeedback[0]);
+////    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
+//    glEnableVertexAttribArray(1);
+//    glDisableVertexAttribArray(0);
+
+    static float c = 0.0;
+
+    glDisableVertexAttribArray(1);
+//    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glEnable(GL_RASTERIZER_DISCARD);
+    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, m_transformFeedback[0]);
+
+    GLuint location = glGetUniformLocation(programHandle, "UseTF");
+    glUniform1f(location,c);
+    glBindVertexArray(vaoHandle);
+
 
     glBeginTransformFeedback(GL_POINTS);
-
-    if (m_isFirst) {
-          glDrawArrays(GL_POINTS, 0, 1);
-          m_isFirst = false;
-      }
-      else {
-          glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currVB]);
-      }
+    glDrawArrays(GL_POINTS, 0, 3);
     glEndTransformFeedback();
-    glDisableVertexAttribArray(0);
 
-    //RENDER
 
     glDisable(GL_RASTERIZER_DISCARD);
-    glBindBuffer(GL_ARRAY_BUFFER, m_particleBuffer[m_currTFB]);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, size, (const GLvoid*)4); // position
 
-    glDrawTransformFeedback(GL_POINTS, m_transformFeedback[m_currTFB]);
-    glDisableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
 
-    m_currVB = m_currTFB;
-    m_currTFB = (m_currTFB + 1) & 0x1;
+    location = glGetUniformLocation(programHandle, "UseTF");
+    glUniform1f(location, 0.0);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    c += 0.01;
+
+    if (c > 1.0) c = 0.0;
 
 }
 

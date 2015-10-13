@@ -38,5 +38,6 @@ void GLWidget::paintGL()
 //    shader.render();
 //    program.render();
     program.renderTF();
+    update();
 }
 
