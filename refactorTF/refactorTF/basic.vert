@@ -1,11 +1,19 @@
-attribute vec4 qt_Vertex;
-attribute vec4 qt_MultiTexCoord0;
-uniform mat4 qt_ModelViewProjectionMatrix;
-varying vec4 qt_TexCoord0;
+#version 400
+in vec4 in_Position;
+in vec4 in_Color;
+
+out vec4 Color;
+out vec4 Novo;
+
+uniform float factor;
 
 void main(void)
 {
-    gl_Position = qt_ModelViewProjectionMatrix * qt_Vertex;
-    qt_TexCoord0 = qt_MultiTexCoord0;
+    if(factor==1.0){
+        Color = vec4(1.0, 0.0, 0.0, 1.0);
+    }else{
+        Novo = in_Color;
+    }
+    gl_Position = in_Position;
 }
 

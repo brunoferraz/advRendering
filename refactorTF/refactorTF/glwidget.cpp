@@ -30,5 +30,7 @@ void GLWidget::initializeGL()
 void GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    shader.renderTF();
+    update();
 }
 

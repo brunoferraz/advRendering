@@ -32,6 +32,7 @@ public:
     void use();
 
     void createVertexAttribute(GLuint location, const char *name, std::vector<Eigen::Vector4f> &data);
+    void createVertexAttributeTF(const char *name, std::vector<Eigen::Vector4f> &data);
     void bindAttribLocation( GLuint location, const char *name);
     void setUniform(const char *name, float val);
 
@@ -39,9 +40,13 @@ public:
     void printActiveAttribs();
 
     void render();
+    void renderTF();
 
 private:
     GLuint programHandle;
+    GLuint vaoHandle;
+
+    GLuint TFbuffer;
 
     std::string logString;
     bool fileExists(const std::string & fileName);
