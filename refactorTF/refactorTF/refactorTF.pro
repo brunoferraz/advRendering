@@ -28,4 +28,6 @@ FORMS    += mainwindow.ui
 
 DISTFILES += \
     basic.vert \
-    basic.frag
+    basic.frag \
+    rendertf.vert \
+    rendertf.frag

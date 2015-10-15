@@ -37,10 +37,14 @@ void GLSLShader::initialize()
     vdataColor.push_back(Eigen::Vector4f(0, 1, 0, 1));
     vdataColor.push_back(Eigen::Vector4f(0, 0, 1, 1));
 
-    createVertexAttribute(0, "in_Positioin", vdata);
+    createVertexAttribute(0, "in_Position", vdata);
     createVertexAttribute(1, "in_Color", vdataColor);
+    createVertexAttributeTF("Color", vdataColor);
     setUniform("factor", 0.1);
     printActiveAttribs();
+
+    //#3 & 4 LINK AND USE PROGRAM
+    if(link())use();
 }
 
 GLuint GLSLShader::prepareShader(const char *fileName, GLSL::GLSLShaderType type)
@@ -184,7 +188,7 @@ void GLSLShader::createVertexAttributeTF(const char *name, std::vector<Eigen::Ve
     glTransformFeedbackVaryings(programHandle, 1, vars, GL_INTERLEAVED_ATTRIBS);
     glBindBuffer(GL_ARRAY_BUFFER, TFbuffer);
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
-   // glEnableVertexAttribArray(0);
+//    glEnableVertexAttribArray(0);
 }
 
 void GLSLShader::bindAttribLocation(GLuint location, const char *name)
@@ -218,6 +222,24 @@ void GLSLShader::printActiveAttribs()
     }
     std::cout << "----------------------------------\n" << std::endl;
     free(name);
+
+//    GLint maxLength, nAttribs;
+//    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
+//    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+
+//    GLchar *name = (GLchar *) malloc(maxLength);
+
+//    GLint written, size, location;
+//    GLenum type;
+//    std::printf("----------------------------------\n");
+//    std::printf("INDEX  | NAME\n");
+//    std::printf("----------------------------------\n");
+//    for(int i =0; i < nAttribs; i++){
+//        glGetActiveAttrib(programHandle, i, maxLength, &written, &size, &type, name);
+//        location = glGetAttribLocation(programHandle, name);
+//        printf(" %-5d | %s\n", location, name);
+//    }
+//    free(name);
 }
 
 void GLSLShader::render()
@@ -247,6 +269,7 @@ void GLSLShader::renderTF()
 
      glEnableVertexAttribArray(1);
      glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
+
      setUniform("factor", 0.0);
      glDrawArrays(GL_TRIANGLES, 0, 3);
 }

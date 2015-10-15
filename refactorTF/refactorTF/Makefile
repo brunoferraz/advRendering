@@ -61,6 +61,8 @@ OBJECTS       = main.o \
 		moc_glwidget.o
 DIST          = basic.vert \
 		basic.frag \
+		rendertf.vert \
+		rendertf.frag \
 		../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/linux.conf \

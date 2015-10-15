@@ -43,7 +43,8 @@ public:
     void renderTF();
 
 private:
-    GLuint programHandle;
+    GLuint firstProgramHandle;
+    GLuint secondProgramHandle;
     GLuint vaoHandle;
 
     GLuint TFbuffer;
