@@ -25,6 +25,7 @@ class GLSLShader
 public:
     GLSLShader();
 
+    void initializeTF();
     void initialize();
     GLuint prepareShader(const char * fileName, GLSL::GLSLShaderType type);
 
@@ -42,9 +43,13 @@ public:
     void render();
     void renderTF();
 
+    GLuint *getProgramHandle() const;
+    void setProgramHandle(GLuint *value);
+
 private:
-    GLuint firstProgramHandle;
-    GLuint secondProgramHandle;
+    GLuint *programHandle;
+    GLuint firstProgram;
+    GLuint secondProgram;
     GLuint vaoHandle;
 
     GLuint TFbuffer;

@@ -6,6 +6,20 @@ GLSLShader::GLSLShader()
     debugStatus = true;
 }
 
+void GLSLShader::initializeTF()
+{
+    GLuint vertex   = prepareShader("basic.vert", GLSL::VERTEX);
+    firstProgram = glCreateProgram();
+    programHandle = &firstProgram;
+    if(0 == *programHandle)
+    {
+        logString += "Error creating program object\n";
+        exit(1);
+    }
+    glAttachShader(*programHandle, vertex);
+    if(link())use();
+}
+
 void GLSLShader::initialize()
 {
     //#0 PREPARE SHADER
@@ -13,16 +27,17 @@ void GLSLShader::initialize()
     GLuint fragment = prepareShader("basic.frag", GLSL::FRAGMENT);
 
     //#1 CREATE PROGRAM HANDLER
-    programHandle = glCreateProgram();
-    if(0 == programHandle)
+    secondProgram = glCreateProgram();
+    programHandle = &secondProgram;
+    if(0 == *programHandle)
     {
         logString += "Error creating program object\n";
         exit(1);
     }
 
     //#2 ATTACH SHADER TO PROGRAM
-    glAttachShader(programHandle, fragment);
-    glAttachShader(programHandle, vertex);
+    glAttachShader(*programHandle, fragment);
+    glAttachShader(*programHandle, vertex);
 
     //#3 & 4 LINK AND USE PROGRAM
     if(link())use();
@@ -40,7 +55,6 @@ void GLSLShader::initialize()
     createVertexAttribute(0, "in_Position", vdata);
     createVertexAttribute(1, "in_Color", vdataColor);
     createVertexAttributeTF("Color", vdataColor);
-    setUniform("factor", 0.1);
     printActiveAttribs();
 
     //#3 & 4 LINK AND USE PROGRAM
@@ -113,20 +127,20 @@ GLuint GLSLShader::prepareShader(const char *fileName, GLSL::GLSLShaderType type
 
 bool GLSLShader::link()
 {
-    glLinkProgram(programHandle);
+    glLinkProgram(*programHandle);
 
     //#4 VERIFY LINK STATUS
     GLint status;
-    glGetProgramiv(programHandle, GL_LINK_STATUS, &status);
+    glGetProgramiv(*programHandle, GL_LINK_STATUS, &status);
     if( GL_FALSE == status ){
         logString +=  "LINKING - FAILED TO LINKING SHADER PROGRAM\n";
         GLint logLen;
-        glGetProgramiv(programHandle, GL_INFO_LOG_LENGTH, &logLen);
+        glGetProgramiv(*programHandle, GL_INFO_LOG_LENGTH, &logLen);
         if(logLen > 0)
         {
             char *log = (char *)malloc(logLen);
             GLsizei written;
-            glGetProgramInfoLog(programHandle, logLen, &written, log);
+            glGetProgramInfoLog(*programHandle, logLen, &written, log);
             logString+= "PROGRAM LINK FAIL LOG | " + std::string(log) + "\b";
         }
         return false;
@@ -139,7 +153,7 @@ bool GLSLShader::link()
 
 void GLSLShader::use()
 {
-    glUseProgram(programHandle);
+    glUseProgram(*programHandle);
     if(isDebug()) qDebug() << logString.c_str();
 }
 
@@ -185,7 +199,7 @@ void GLSLShader::createVertexAttributeTF(const char *name, std::vector<Eigen::Ve
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     const char* vars[] = { name };
-    glTransformFeedbackVaryings(programHandle, 1, vars, GL_INTERLEAVED_ATTRIBS);
+    glTransformFeedbackVaryings(*programHandle, 1, vars, GL_INTERLEAVED_ATTRIBS);
     glBindBuffer(GL_ARRAY_BUFFER, TFbuffer);
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, 0);
 //    glEnableVertexAttribArray(0);
@@ -193,20 +207,20 @@ void GLSLShader::createVertexAttributeTF(const char *name, std::vector<Eigen::Ve
 
 void GLSLShader::bindAttribLocation(GLuint location, const char *name)
 {
-    glBindAttribLocation(programHandle, location, name);
+    glBindAttribLocation(*programHandle, location, name);
 }
 
 void GLSLShader::setUniform(const char *name, float val)
 {
-    GLuint location = glGetUniformLocation(programHandle, name);
+    GLuint location = glGetUniformLocation(*programHandle, name);
     glUniform1f(location, val);
 }
 
 void GLSLShader::printActiveAttribs()
 {
     GLint maxLength, nAttribs;
-    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
-    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+    glGetProgramiv(*programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
+    glGetProgramiv(*programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
 
     GLchar *name = (GLchar *) malloc(maxLength);
 
@@ -216,8 +230,8 @@ void GLSLShader::printActiveAttribs()
                  "| INDEX | NAME                   |\n" <<
                  "----------------------------------\n";
     for(int i =0; i < nAttribs; i++){
-        glGetActiveAttrib(programHandle, i, maxLength, &written, &size, &type, name);
-        location = glGetAttribLocation(programHandle, name);
+        glGetActiveAttrib(*programHandle, i, maxLength, &written, &size, &type, name);
+        location = glGetAttribLocation(*programHandle, name);
         std::cout <<  "   " << location<< "    | " <<  name << std::endl;
     }
     std::cout << "----------------------------------\n" << std::endl;
@@ -270,8 +284,17 @@ void GLSLShader::renderTF()
      glEnableVertexAttribArray(1);
      glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
 
-     setUniform("factor", 0.0);
      glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+GLuint *GLSLShader::getProgramHandle() const
+{
+    return programHandle;
+}
+
+void GLSLShader::setProgramHandle(GLuint *value)
+{
+    programHandle = value;
 }
 
 bool GLSLShader::isDebug()
