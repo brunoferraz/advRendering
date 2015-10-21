@@ -45,3 +45,5 @@ FORMS    += mainwindow.ui
 OTHER_FILES += \
     $$BUILDDIR/effects/shaders/tftestbasic.vert \
     $$BUILDDIR/effects/shaders/tftestbasic.frag \
+    $$BUILDDIR/effects/shaders/tfrender.vert \
+    $$BUILDDIR/effects/shaders/tfrender.frag \

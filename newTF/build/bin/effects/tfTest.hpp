@@ -25,6 +25,7 @@
 
 #include <tucano.hpp>
 #include <camera.hpp>
+#include <QDebug>
 
 using namespace Tucano;
 
@@ -38,9 +39,11 @@ class TFtest : public Effect
 {
 
 private:
-
     /// Phong Shader
     Shader tftest_shader;
+    Shader tfrender;
+
+    GLuint TFbuffer;
 
 	/// Default color
 	Eigen::Vector4f default_color;
@@ -68,11 +71,16 @@ public:
         // searches in default shader directory (/shaders) for shader files phongShader.(vert,frag,geom,comp)
 
 //        loadShader(tftest_shader, "tftestbasic") ;
+
+
         tftest_shader.load("tftestbasic", shaders_dir);
-//      tftest_shader.initialize();
+
         const char* vars[] = { "nPos" };
         tftest_shader.initializeTF(1, vars);
         shaders_list.push_back(&tftest_shader);
+
+        loadShader(tfrender, "tfrender");
+//        glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 0, 0);
     }
 
 	/**
@@ -90,39 +98,53 @@ public:
      */
     void render (Tucano::Mesh& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
-
         Eigen::Vector4f viewport = camera.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
 
-
         tftest_shader.bind();
+            // sets all uniform variables for the phong shader
+            tftest_shader.setUniform("projectionMatrix", camera.getProjectionMatrix());
+            tftest_shader.setUniform("modelMatrix", mesh.getModelMatrix());
+            tftest_shader.setUniform("viewMatrix", camera.getViewMatrix());
+            tftest_shader.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
+            tftest_shader.setUniform("has_color", mesh.hasAttribute("in_Color"));
+            tftest_shader.setUniform("default_color", default_color);
+//            tftest_shader.setUniform("tf", 1.0);
 
+            mesh.setAttributeLocation(tftest_shader);
+            glEnable(GL_RASTERIZER_DISCARD);
+                mesh.bindBuffers();
+                glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, mesh.getAttribute("nPos")->getBufferID());
 
-        // sets all uniform variables for the phong shader
-        tftest_shader.setUniform("projectionMatrix", camera.getProjectionMatrix());
-        tftest_shader.setUniform("modelMatrix", mesh.getModelMatrix());
-        tftest_shader.setUniform("viewMatrix", camera.getViewMatrix());
-        tftest_shader.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
-        tftest_shader.setUniform("has_color", mesh.hasAttribute("in_Color"));
-        tftest_shader.setUniform("default_color", default_color);
+                glBeginTransformFeedback(GL_POINTS);
+                glEnable(GL_DEPTH_TEST);
+                mesh.renderPoints();
 
-        mesh.setAttributeLocation(tftest_shader);
-
-        glEnable(GL_RASTERIZER_DISCARD);
-            glBeginTransformFeedback(GL_POINTS);
-
-            glEnable(GL_DEPTH_TEST);
-            mesh.render();
-
-            glEndTransformFeedback();
-        glDisable(GL_RASTERIZER_DISCARD);
-
+                glEndTransformFeedback();
+                mesh.unbindBuffers();
+            glDisable(GL_RASTERIZER_DISCARD);
         tftest_shader.unbind();
+        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
+//        RENDERING
+
+        tfrender.bind();
+            // sets all uniform variables for the phong shader
+            tfrender.setUniform("projectionMatrix", camera.getProjectionMatrix());
+            tfrender.setUniform("modelMatrix", mesh.getModelMatrix());
+            tfrender.setUniform("viewMatrix", camera.getViewMatrix());
+            tfrender.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
+            tfrender.setUniform("has_color", mesh.hasAttribute("in_Color"));
+            tfrender.setUniform("default_color", default_color);
+//            tfrender.setUniform("tf", 1.0);
+
+            mesh.setAttributeLocation(tfrender);
+            mesh.bindBuffers();
+            mesh.renderElements();
+            mesh.unbindBuffers();
+        tfrender.unbind();
 
 
     }
-
-
 };
 
 }
