@@ -109,11 +109,15 @@ public:
             tftest_shader.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
             tftest_shader.setUniform("has_color", mesh.hasAttribute("in_Color"));
             tftest_shader.setUniform("default_color", default_color);
-//            tftest_shader.setUniform("tf", 1.0);
+            tftest_shader.setUniform("tf", 1.0);
 
+            cout << "set attrib TF\n";
             mesh.setAttributeLocation(tftest_shader);
             glEnable(GL_RASTERIZER_DISCARD);
-                mesh.bindBuffers();
+
+
+            mesh.bindBuffers();
+
                 glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, mesh.getAttribute("nPos")->getBufferID());
 
                 glBeginTransformFeedback(GL_POINTS);
@@ -121,10 +125,12 @@ public:
                 mesh.renderPoints();
 
                 glEndTransformFeedback();
+                glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
                 mesh.unbindBuffers();
             glDisable(GL_RASTERIZER_DISCARD);
         tftest_shader.unbind();
-        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
+    printActiveAttribs(tftest_shader.getShaderProgram(), "TF");
+    printActiveAttribs(tfrender.getShaderProgram(), "RENDER");
 //        RENDERING
 
         tfrender.bind();
@@ -137,6 +143,7 @@ public:
             tfrender.setUniform("default_color", default_color);
 //            tfrender.setUniform("tf", 1.0);
 
+            cout << "set attrib RENDER\n";
             mesh.setAttributeLocation(tfrender);
             mesh.bindBuffers();
             mesh.renderElements();
@@ -145,6 +152,47 @@ public:
 
 
     }
+    void printActiveAttribs(GLuint programHandle, const char* nome)
+    {
+        GLint maxLength, nAttribs;
+        glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
+        glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+
+        GLchar *name = (GLchar *) malloc(maxLength);
+
+        GLint written, size, location;
+        GLenum type;
+        std::cout << nome <<
+                     "----------------------------------\n" <<
+                     "| INDEX | NAME                   |\n" <<
+                     "----------------------------------\n";
+        for(int i =0; i < nAttribs; i++){
+            glGetActiveAttrib(programHandle, i, maxLength, &written, &size, &type, name);
+            location = glGetAttribLocation(programHandle, name);
+            std::cout <<  "   " << location<< "    | " <<  name << std::endl;
+        }
+        std::cout << "----------------------------------\n" << std::endl;
+        free(name);
+
+    //    GLint maxLength, nAttribs;
+    //    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
+    //    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+
+    //    GLchar *name = (GLchar *) malloc(maxLength);
+
+    //    GLint written, size, location;
+    //    GLenum type;
+    //    std::printf("----------------------------------\n");
+    //    std::printf("INDEX  | NAME\n");
+    //    std::printf("----------------------------------\n");
+    //    for(int i =0; i < nAttribs; i++){
+    //        glGetActiveAttrib(programHandle, i, maxLength, &written, &size, &type, name);
+    //        location = glGetAttribLocation(programHandle, name);
+    //        printf(" %-5d | %s\n", location, name);
+    //    }
+    //    free(name);
+    }
+
 };
 
 }

@@ -2,8 +2,9 @@
 
 in vec4 in_Position;
 in vec3 in_Normal;
-in vec2 in_TexCoords;
 in vec4 in_Color;
+in vec2 in_TexCoords;
+
 
 out vec4 nPos;
 out vec4 color;
@@ -46,6 +47,7 @@ void main(void)
         color = default_color;
 
     if(tf == 0.0){
-        color = in_Color;
+        color = in_Color + in_TexCoords.xxxx;
+
     }
 }

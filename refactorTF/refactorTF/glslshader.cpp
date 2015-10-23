@@ -270,8 +270,8 @@ void GLSLShader::renderTF()
 {
     glDisableVertexAttribArray(1);
     glEnable(GL_RASTERIZER_DISCARD);
-        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, TFbuffer);
-        setUniform("factor", 1.0);
+    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, TFbuffer);
+    setUniform("factor", 1.0);
 
         glBindVertexArray(vaoHandle);
 
