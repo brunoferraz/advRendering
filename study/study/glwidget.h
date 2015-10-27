@@ -17,6 +17,8 @@ public:
 
     Effects::TFTest *shader;
 
+    Mesh mymesh;
+
 signals:
 
 public slots:

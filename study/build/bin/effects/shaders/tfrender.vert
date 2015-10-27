@@ -39,7 +39,7 @@ void main(void)
 
         vec4 pos = vec4(vec3(nPos.xyz + nVel.xyz), 1.0);
 
-        gl_Position = (projectionMatrix * modelViewMatrix) * nPos;
+        gl_Position = (projectionMatrix * modelViewMatrix) * in_Position;
 
     if (has_color)
         color = in_Color;

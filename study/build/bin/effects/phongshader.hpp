@@ -105,8 +105,6 @@ public:
 
         phong_shader.unbind();
     }
-
-
 };
 
 }

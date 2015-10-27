@@ -69,11 +69,11 @@ public:
         // searches in default shader directory (/shaders) for shader files phongShader.(vert,frag,geom,comp)
         //loadShader(tfTest_shader, "phongshader") ;
 
-        tfTest_shader.load("tf", shaders_dir);
-        const char* vars[] = {"nPos"};
+//        tfTest_shader.load("tf", shaders_dir);
+//        const char* vars[] = {"nPos"};
 
-        tfTest_shader.initializeTF(1, vars);
-        shaders_list.push_back(&tfTest_shader);
+//        tfTest_shader.initializeTF(1, vars);
+//        shaders_list.push_back(&tfTest_shader);
 
         loadShader(tfrender, "tfrender");
     }
@@ -99,7 +99,8 @@ public:
            glEnable(GL_RASTERIZER_DISCARD);
                 mesh.bindBuffers();
                 glDisableVertexAttribArray(3);
-                glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, mesh.getAttribute("nPos")->getBufferID());
+
+                glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, mesh.getAttribute("in_Position")->getBufferID());
                     glBeginTransformFeedback(GL_POINTS);
                         glEnable(GL_DEPTH_TEST);
                         mesh.renderPoints();
@@ -114,13 +115,14 @@ public:
     void render (Tucano::Mesh& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
         cout << "updatetf\n";
-        updateTF(mesh, camera, lightTrackball);
+        //updateTF(mesh, camera, lightTrackball);
         printActiveAttribs(tfTest_shader.getShaderProgram(), "TRANSFORM FEEDBACK");
         printActiveAttribs(tfrender.getShaderProgram(), "RENDER");
 
         Eigen::Vector4f viewport = camera.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
         tfrender.bind();
+        glEnableVertexAttribArray(3);
             // sets all uniform variables for the phong shader
             tfrender.setUniform("projectionMatrix", camera.getProjectionMatrix());
             tfrender.setUniform("modelMatrix", mesh.getModelMatrix());
@@ -131,7 +133,8 @@ public:
             mesh.setAttributeLocation(tfrender);
             glEnable(GL_DEPTH_TEST);
             mesh.bindBuffers();
-            mesh.renderElements();
+            mesh.renderPoints();
+//            mesh.renderElements();
             mesh.unbindBuffers();
         tfrender.unbind();
     }
