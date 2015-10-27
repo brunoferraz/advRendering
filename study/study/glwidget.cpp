@@ -13,19 +13,21 @@ void GLWidget::initialize()
 
     int totalVert = mesh.getNumberOfVertices();
     std::vector<Eigen::Vector4f> npos;
+    std::vector<Eigen::Vector4f> vel;
     for(int i = 0; i < totalVert; i++)
     {
         Eigen::Vector4f v;
         v << 0, 0, 0, 1;
         npos.push_back(v);
+        vel.push_back(v);
     }
     mesh.createAttribute("nPos", npos);
     mesh.setAttributeLocation("nPos", 3);
+    mesh.createAttribute("vel", vel);
 
     shader = new Effects::TFTest();
     shader->setShadersDir("./effects/shaders/");
     shader->initialize();
-
 
 }
 
@@ -38,4 +40,5 @@ void GLWidget::paintGL()
 
     shader->render(mesh, camera, light_trackball);
     camera.render();
+    update();
 }

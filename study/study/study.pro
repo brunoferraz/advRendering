@@ -41,3 +41,5 @@ FORMS    += mainwindow.ui
 DISTFILES += \
     ../build/bin/effects/shaders/tf.vert \
     ../build/bin/effects/shaders/tf.frag \
+    ../build/bin/effects/shaders/tfrender.vert \
+    ../build/bin/effects/shaders/tfrender.frag \

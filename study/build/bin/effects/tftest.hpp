@@ -41,6 +41,7 @@ private:
 
     /// Phong Shader
     Shader tfTest_shader;
+    Shader tfrender;
 
 	/// Default color
 	Eigen::Vector4f default_color;
@@ -68,11 +69,13 @@ public:
         // searches in default shader directory (/shaders) for shader files phongShader.(vert,frag,geom,comp)
         //loadShader(tfTest_shader, "phongshader") ;
 
-        tfTest_shader.load("phongshader", shaders_dir);
+        tfTest_shader.load("tf", shaders_dir);
         const char* vars[] = {"nPos"};
 
         tfTest_shader.initializeTF(1, vars);
         shaders_list.push_back(&tfTest_shader);
+
+        loadShader(tfrender, "tfrender");
     }
 
 
@@ -92,43 +95,86 @@ public:
     void updateTF(Tucano::Mesh& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
         tfTest_shader.bind();
-            mesh.setAttributeLocation(tfTest_shader);
-            glEnable(GL_RASTERIZER_DISCARD);
+           mesh.setAttributeLocation(tfTest_shader);
+           glEnable(GL_RASTERIZER_DISCARD);
                 mesh.bindBuffers();
-//                    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, mesh.getAttribute("nPos")->getBufferID());
-//                    glBeginTransformFeedback(GL_POINTS);
-//                    glEnable(GL_DEPTH_TEST);
-//                        mesh.renderPoints();
-//                    glEndTransformFeedback();
-//                    glBindBufferBase(GL_TRANSFORM_FEEDBACK, 0, 0);
-//                mesh.unbindBuffers();
+                glDisableVertexAttribArray(3);
+                glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, mesh.getAttribute("nPos")->getBufferID());
+                    glBeginTransformFeedback(GL_POINTS);
+                        glEnable(GL_DEPTH_TEST);
+                        mesh.renderPoints();
+                    glEndTransformFeedback();
+                glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
+                mesh.unbindBuffers();
             glDisable(GL_RASTERIZER_DISCARD);
         tfTest_shader.unbind();
+
+        Tucano::Misc::errorCheckFunc(__FILE__, __LINE__);
     }
     void render (Tucano::Mesh& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
+        cout << "updatetf\n";
         updateTF(mesh, camera, lightTrackball);
-//        Eigen::Vector4f viewport = camera.getViewport();
-//        glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
+        printActiveAttribs(tfTest_shader.getShaderProgram(), "TRANSFORM FEEDBACK");
+        printActiveAttribs(tfrender.getShaderProgram(), "RENDER");
 
-//        tfTest_shader.bind();
-
-//        // sets all uniform variables for the phong shader
-//        tfTest_shader.setUniform("projectionMatrix", camera.getProjectionMatrix());
-//        tfTest_shader.setUniform("modelMatrix", mesh.getModelMatrix());
-//        tfTest_shader.setUniform("viewMatrix", camera.getViewMatrix());
-//        tfTest_shader.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
-//        tfTest_shader.setUniform("has_color", mesh.hasAttribute("in_Color"));
-//        tfTest_shader.setUniform("default_color", default_color);
-
-//        mesh.setAttributeLocation(tfTest_shader);
-
-//        glEnable(GL_DEPTH_TEST);
-//        mesh.render();
-
-//        tfTest_shader.unbind();
+        Eigen::Vector4f viewport = camera.getViewport();
+        glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
+        tfrender.bind();
+            // sets all uniform variables for the phong shader
+            tfrender.setUniform("projectionMatrix", camera.getProjectionMatrix());
+            tfrender.setUniform("modelMatrix", mesh.getModelMatrix());
+            tfrender.setUniform("viewMatrix", camera.getViewMatrix());
+            tfrender.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
+            tfrender.setUniform("has_color", mesh.hasAttribute("in_Color"));
+            tfrender.setUniform("default_color", default_color);
+            mesh.setAttributeLocation(tfrender);
+            glEnable(GL_DEPTH_TEST);
+            mesh.bindBuffers();
+            mesh.renderElements();
+            mesh.unbindBuffers();
+        tfrender.unbind();
     }
+    void printActiveAttribs(GLuint programHandle, const char* nome)
+    {
+        GLint maxLength, nAttribs;
+        glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
+        glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
 
+        GLchar *name = (GLchar *) malloc(maxLength);
+
+        GLint written, size, location;
+        GLenum type;
+        std::cout << nome << "\n" <<
+                     "----------------------------------\n" <<
+                     "| INDEX | NAME                   |\n" <<
+                     "----------------------------------\n";
+        for(int i =0; i < nAttribs; i++){
+            glGetActiveAttrib(programHandle, i, maxLength, &written, &size, &type, name);
+            location = glGetAttribLocation(programHandle, name);
+            std::cout <<  "   " << location<< "    | " <<  name << std::endl;
+        }
+        std::cout << "----------------------------------\n" << std::endl;
+        free(name);
+
+    //    GLint maxLength, nAttribs;
+    //    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTES, &nAttribs);
+    //    glGetProgramiv(programHandle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &maxLength);
+
+    //    GLchar *name = (GLchar *) malloc(maxLength);
+
+    //    GLint written, size, location;
+    //    GLenum type;
+    //    std::printf("----------------------------------\n");
+    //    std::printf("INDEX  | NAME\n");
+    //    std::printf("----------------------------------\n");
+    //    for(int i =0; i < nAttribs; i++){
+    //        glGetActiveAttrib(programHandle, i, maxLength, &written, &size, &type, name);
+    //        location = glGetAttribLocation(programHandle, name);
+    //        printf(" %-5d | %s\n", location, name);
+    //    }
+    //    free(name);
+    }
 
 
 };

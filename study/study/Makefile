@@ -61,6 +61,8 @@ OBJECTS       = ../build/obj/main.o \
 		../build/obj/moc_qttrackballwidget.o
 DIST          = ../build/bin/effects/shaders/tf.vert \
 		../build/bin/effects/shaders/tf.frag \
+		../build/bin/effects/shaders/tfrender.vert \
+		../build/bin/effects/shaders/tfrender.frag \
 		../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/linux.conf \
