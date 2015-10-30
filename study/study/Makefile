@@ -63,6 +63,8 @@ DIST          = ../build/bin/effects/shaders/tf.vert \
 		../build/bin/effects/shaders/tf.frag \
 		../build/bin/effects/shaders/tfrender.vert \
 		../build/bin/effects/shaders/tfrender.frag \
+		../build/bin/effects/shaders/simple.vert \
+		../build/bin/effects/shaders/simple.frag \
 		../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.5/gcc_64/mkspecs/common/linux.conf \
@@ -197,7 +199,8 @@ DIST          = ../build/bin/effects/shaders/tf.vert \
 		glwidget.h \
 		../../../tucano/src/utils/qttrackballwidget.hpp \
 		../build/bin/effects/phongshader.hpp \
-		../build/bin/effects/tftest.hpp main.cpp \
+		../build/bin/effects/tftest.hpp \
+		../build/bin/effects/simpleTest.hpp main.cpp \
 		mainwindow.cpp \
 		glwidget.cpp
 QMAKE_TARGET  = study
@@ -516,7 +519,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h glwidget.h ../../../tucano/src/utils/qttrackballwidget.hpp ../build/bin/effects/phongshader.hpp ../build/bin/effects/tftest.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h glwidget.h ../../../tucano/src/utils/qttrackballwidget.hpp ../build/bin/effects/phongshader.hpp ../build/bin/effects/tftest.hpp ../build/bin/effects/simpleTest.hpp $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp mainwindow.cpp glwidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
@@ -961,7 +964,6 @@ compiler_moc_header_clean:
 		../../../tucano/src/utils/rply.hpp \
 		../../../tucano/src/tucano.hpp \
 		../../../tucano/src/effect.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
 		../../../tucano/src/bufferobject.hpp \
 		../../../tucano/src/texture.hpp \
 		../../../tucano/src/texturemanager.hpp \
@@ -990,6 +992,7 @@ compiler_moc_header_clean:
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
 		../build/bin/effects/tftest.hpp \
+		../build/bin/effects/simpleTest.hpp \
 		glwidget.h
 	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/study/study -I/lcg/home/brferraz/dev/tucano/src -I/lcg/home/brferraz/dev/tucano/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/study/build/bin/effects -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore glwidget.h -o ../build/moc/moc_glwidget.cpp
 
@@ -1199,9 +1202,15 @@ compiler_moc_header_clean:
 		../../../tucano/src/utils/rply.hpp \
 		../../../tucano/src/tucano.hpp \
 		../../../tucano/src/effect.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qdebug.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../tucano/src/bufferobject.hpp \
+		../../../tucano/src/texture.hpp \
+		../../../tucano/src/texturemanager.hpp \
+		../../../tucano/src/framebuffer.hpp \
+		../../../tucano/src/utils/trackball.hpp \
+		../../../tucano/src/camera.hpp \
+		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
+		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qconfig.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfeatures.h \
@@ -1230,27 +1239,29 @@ compiler_moc_header_clean:
 		../../../../Qt/5.5/gcc_64/include/QtCore/qglobalstatic.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmutex.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qnumeric.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qt_windows.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qopengles2ext.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qopenglext.h \
+		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qchar.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qrefcount.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qarraydata.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearray.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qnamespace.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qstring.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qbytearraylist.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qstringlist.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qregexp.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qpair.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qmap.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qtextstream.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qiodevice.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qobject.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qobjectdefs_impl.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qcoreevent.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qscopedpointer.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmetatype.h \
@@ -1258,40 +1269,22 @@ compiler_moc_header_clean:
 		../../../../Qt/5.5/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qisenum.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qobject_impl.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qlocale.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qvariant.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qvector.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qpoint.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qset.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../tucano/src/bufferobject.hpp \
-		../../../tucano/src/texture.hpp \
-		../../../tucano/src/texturemanager.hpp \
-		../../../tucano/src/framebuffer.hpp \
-		../../../tucano/src/utils/trackball.hpp \
-		../../../tucano/src/camera.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtOpenGL/QGLWidget \
-		../../../../Qt/5.5/gcc_64/include/QtOpenGL/qgl.h \
-		../../../../Qt/5.5/gcc_64/include/QtGui/qopengl.h \
-		../../../../Qt/5.5/gcc_64/include/QtCore/qt_windows.h \
-		../../../../Qt/5.5/gcc_64/include/QtGui/qopengles2ext.h \
-		../../../../Qt/5.5/gcc_64/include/QtGui/qopenglext.h \
-		../../../../Qt/5.5/gcc_64/include/QtWidgets/qwidget.h \
-		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs.h \
-		../../../../Qt/5.5/gcc_64/include/QtGui/qwindowdefs_win.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qmargins.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpaintdevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qrect.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qpoint.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpalette.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qcolor.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qrgb.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvector.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qmatrix.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpolygon.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qregion.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qiodevice.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qline.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qtransform.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpainterpath.h \
@@ -1299,6 +1292,8 @@ compiler_moc_header_clean:
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpixelformat.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qpixmap.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qhash.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qfont.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qfontmetrics.h \
@@ -1307,6 +1302,13 @@ compiler_moc_header_clean:
 		../../../../Qt/5.5/gcc_64/include/QtGui/qcursor.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qkeysequence.h \
 		../../../../Qt/5.5/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/5.5/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qurl.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qurlquery.h \
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfile.h \
@@ -1646,7 +1648,6 @@ compiler_uic_clean:
 		../../../tucano/src/utils/rply.hpp \
 		../../../tucano/src/tucano.hpp \
 		../../../tucano/src/effect.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
 		../../../tucano/src/bufferobject.hpp \
 		../../../tucano/src/texture.hpp \
 		../../../tucano/src/texturemanager.hpp \
@@ -1674,7 +1675,8 @@ compiler_uic_clean:
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
-		../build/bin/effects/tftest.hpp
+		../build/bin/effects/tftest.hpp \
+		../build/bin/effects/simpleTest.hpp
 	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/uic mainwindow.ui -o ../build/ui/ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -2148,7 +2150,6 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../../../tucano/src/utils/rply.hpp \
 		../../../tucano/src/tucano.hpp \
 		../../../tucano/src/effect.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
 		../../../tucano/src/bufferobject.hpp \
 		../../../tucano/src/texture.hpp \
 		../../../tucano/src/texturemanager.hpp \
@@ -2176,7 +2177,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
-		../build/bin/effects/tftest.hpp
+		../build/bin/effects/tftest.hpp \
+		../build/bin/effects/simpleTest.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/mainwindow.o mainwindow.cpp
 
 ../build/obj/glwidget.o: glwidget.cpp glwidget.h \
@@ -2489,7 +2491,6 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../../../tucano/src/utils/rply.hpp \
 		../../../tucano/src/tucano.hpp \
 		../../../tucano/src/effect.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
 		../../../tucano/src/bufferobject.hpp \
 		../../../tucano/src/texture.hpp \
 		../../../tucano/src/texturemanager.hpp \
@@ -2517,7 +2518,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../../../../Qt/5.5/gcc_64/include/QtCore/qfileinfo.h \
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
-		../build/bin/effects/tftest.hpp
+		../build/bin/effects/tftest.hpp \
+		../build/bin/effects/simpleTest.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/glwidget.o glwidget.cpp
 
 ../build/obj/moc_mainwindow.o: ../build/moc/moc_mainwindow.cpp 

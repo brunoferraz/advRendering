@@ -11,7 +11,7 @@ void GLWidget::initialize()
     Tucano::QtTrackballWidget::initialize();
     Tucano::QtTrackballWidget::openMesh("./models/toy.obj");
 
-    int totalVert = mesh.getNumberOfVertices();
+    int totalVert = 1000; //mesh.getNumberOfVertices();
     std::vector<Eigen::Vector4f> npos;
     std::vector<Eigen::Vector4f> vel;
     std::vector<GLuint> indices;
@@ -19,32 +19,38 @@ void GLWidget::initialize()
     for(int i = 0; i < totalVert; i++)
     {
         Eigen::Vector4f v;
-        float posX = (rand() % 100)/100.0;
-        float posY = (rand() % 100)/100.0;
-        float posZ = (rand() % 100)/100.0;
+        float posX = (rand() * 2 / (float)RAND_MAX);
+        float posY = (rand() * 2/ (float)RAND_MAX);
+        float posZ = (rand() * 2/ (float)RAND_MAX);
+
         v << posX, posY, posZ, 1;
+//        v << 1.0, 1.0, 1.0, 1.0;
         npos.push_back(v);
         vel.push_back(v);
         indices.push_back(i);
+        cout << v.transpose() << endl;
     }
 
-//    mesh.createAttribute("nPos_1", npos);
+//    mesh.createAttribute("nPos", npos);
 //    mesh.createAttribute("nPos_2", vel);
 
 //    mesh.setAttributeLocation("nPos_1", 3);
 //    mesh.createAttribute("vel", vel);
 
 //    mymesh.createAttribute("in_Position", npos);
-//    mymesh.createAttribute("nPos", npos);
+    mymesh.createAttribute("inPos", npos);
+//    mymesh.createAttribute("nPos2", npos);
     mymesh.loadVertices(npos);
-    mymesh.loadIndices(indices);
+//    mymesh.loadIndices(indices);
 
 
 
-    shader = new Effects::TFTest();
-    shader->setShadersDir("./effects/shaders/");
-    shader->initialize();
-
+//    shader = new Effects::TFTest();
+//    shader->setShadersDir("./effects/shaders/");
+//    shader->initialize();
+    simple = new Effects::SimpleTest();
+    simple->setShadersDir("./effects/shaders/");
+    simple->initialize();
 }
 
 void GLWidget::paintGL()
@@ -55,7 +61,7 @@ void GLWidget::paintGL()
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glPointSize(5);
 
-    shader->render(mymesh, camera, light_trackball);
+    simple->render(mymesh, camera, light_trackball);
     camera.render();
 //    update();
 }

@@ -35,6 +35,7 @@ HEADERS  += mainwindow.h \
     $$TUCANO_PATH/src/utils/qttrackballwidget.hpp \
     $$BUILDDIR/effects/phongshader.hpp \
     $$BUILDDIR/effects/tftest.hpp \
+    $$BUILDDIR/effects/simpleTest.hpp \
 
 FORMS    += mainwindow.ui
 
@@ -43,3 +44,5 @@ DISTFILES += \
     ../build/bin/effects/shaders/tf.frag \
     ../build/bin/effects/shaders/tfrender.vert \
     ../build/bin/effects/shaders/tfrender.frag \
+    ../build/bin/effects/shaders/simple.vert \
+    ../build/bin/effects/shaders/simple.frag

@@ -1,4 +1,4 @@
-#version 150
+#version 400
 
 in vec4 color;
 in vec3 normal;
@@ -24,5 +24,6 @@ void main(void)
     vec4 diffuseLight = color * 0.4 * max(dot(lightDirection, normal),0.0);
     vec4 specularLight = vec4(1.0) *  max(pow(dot(lightReflection, eyeDirection), shininess),0.0);
 
-    out_Color = vec4(ambientLight.xyz + diffuseLight.xyz + specularLight.xyz,1.0);
+    //out_Color = vec4(ambientLight.xyz + diffuseLight.xyz + specularLight.xyz,1.0);
+    out_Color = vec4(1.0, 0.0, 1.0 ,1.0);
 }

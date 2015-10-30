@@ -5,6 +5,7 @@
 #include <utils/qttrackballwidget.hpp>
 #include <phongshader.hpp>
 #include <tftest.hpp>
+#include <simpleTest.hpp>
 
 class GLWidget : public Tucano::QtTrackballWidget
 {
@@ -16,6 +17,7 @@ public:
     void paintGL();
 
     Effects::TFTest *shader;
+    Effects::SimpleTest *simple;
 
     Mesh mymesh;
 
