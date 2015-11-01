@@ -90,20 +90,20 @@ public:
         Eigen::Vector4f viewport = camera.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
         simple.bind();
-//        glEnableVertexAttribArray(3);
             // sets all uniform variables for the phong shader
+
             simple.setUniform("projectionMatrix", camera.getProjectionMatrix());
             simple.setUniform("modelMatrix", mesh.getModelMatrix());
             simple.setUniform("viewMatrix", camera.getViewMatrix());
-            simple.setUniform("lightViewMatrix", lightTrackball.getViewMatrix());
-            simple.setUniform("has_color", mesh.hasAttribute("in_Color"));
-            simple.setUniform("default_color", default_color);
+
             mesh.setAttributeLocation(simple);
             glEnable(GL_DEPTH_TEST);
             mesh.bindBuffers();
+            mesh.setAttributeLocation("inColor", simple.getAttributeLocation("nColor"));
+            cout << simple.getAttributeLocation("nColor") << endl;
             mesh.renderPoints();
-//            mesh.renderElements();
             mesh.unbindBuffers();
+
         simple.unbind();
     }
 

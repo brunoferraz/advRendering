@@ -13,41 +13,33 @@ void GLWidget::initialize()
 
     int totalVert = 1000; //mesh.getNumberOfVertices();
     std::vector<Eigen::Vector4f> npos;
-    std::vector<Eigen::Vector4f> vel;
+    std::vector<Eigen::Vector4f> inColor;
+    std::vector<Eigen::Vector4f> nColor;
+
     std::vector<GLuint> indices;
 
     for(int i = 0; i < totalVert; i++)
     {
         Eigen::Vector4f v;
+        Eigen::Vector4f c;
+        Eigen::Vector4f b;
         float posX = (rand() * 2 / (float)RAND_MAX);
         float posY = (rand() * 2/ (float)RAND_MAX);
         float posZ = (rand() * 2/ (float)RAND_MAX);
 
         v << posX, posY, posZ, 1;
-//        v << 1.0, 1.0, 1.0, 1.0;
+        c << 1.0, 0.0, 0.0, 1.0;
+        inColor.push_back(c);
         npos.push_back(v);
-        vel.push_back(v);
-        indices.push_back(i);
-        cout << v.transpose() << endl;
+        b << 0.0, 0.0, 1.0, 1.0;
+        nColor.push_back(b);
     }
 
-//    mesh.createAttribute("nPos", npos);
-//    mesh.createAttribute("nPos_2", vel);
-
-//    mesh.setAttributeLocation("nPos_1", 3);
-//    mesh.createAttribute("vel", vel);
-
-//    mymesh.createAttribute("in_Position", npos);
     mymesh.createAttribute("inPos", npos);
-//    mymesh.createAttribute("nPos2", npos);
+    mymesh.createAttribute("inColor", inColor);
+    mymesh.createAttribute("nColor", nColor);
     mymesh.loadVertices(npos);
-//    mymesh.loadIndices(indices);
 
-
-
-//    shader = new Effects::TFTest();
-//    shader->setShadersDir("./effects/shaders/");
-//    shader->initialize();
     simple = new Effects::SimpleTest();
     simple->setShadersDir("./effects/shaders/");
     simple->initialize();
