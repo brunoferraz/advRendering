@@ -38,6 +38,7 @@ void GLWidget::initialize()
     mymesh.createAttribute("inPos", npos);
     mymesh.createAttribute("inColor", inColor);
     mymesh.createAttribute("nColor", nColor);
+    mymesh.setAttributeLocation("nColor", 2);
     mymesh.loadVertices(npos);
 
     simple = new Effects::SimpleTest();

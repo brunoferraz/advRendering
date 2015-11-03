@@ -99,6 +99,7 @@ public:
             mesh.setAttributeLocation(simple);
             glEnable(GL_DEPTH_TEST);
             mesh.bindBuffers();
+            mesh.resetLocations();
             mesh.setAttributeLocation("inColor", simple.getAttributeLocation("nColor"));
             cout << simple.getAttributeLocation("nColor") << endl;
             mesh.renderPoints();
