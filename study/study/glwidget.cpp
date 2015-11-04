@@ -37,8 +37,8 @@ void GLWidget::initialize()
         vColor.push_back(v);
     }
 
-    mymesh.createAttribute("inPos", npos);
-    mymesh.createAttribute("nPos", npos);
+    mymesh.createAttribute("positions1", npos);
+    mymesh.createAttribute("positions2", npos);
     mymesh.createAttribute("inColor", inColor);
     mymesh.createAttribute("nColor", nColor);
     mymesh.createAttribute("vColor", vColor);
@@ -71,5 +71,5 @@ void GLWidget::paintGL()
 //    shader->render(mymesh, camera, light_trackball);
 
     camera.render();
-//    update();
+    update();
 }

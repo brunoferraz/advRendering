@@ -47,6 +47,9 @@ private:
 	/// Default color
 	Eigen::Vector4f default_color;
 
+    VertexAttribute * read_va;
+    VertexAttribute * write_va;
+
 public:
 
     /**
@@ -55,6 +58,8 @@ public:
     SimpleTF (void)
     {
 		default_color << 0.7, 0.7, 0.7, 1.0;
+        read_va = NULL;
+        write_va = NULL;
     }
 
     /**
@@ -86,17 +91,24 @@ public:
 	}
     void updateTF (Tucano::Mesh& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
-        qDebug() << "UPDATING TF7";
+        qDebug() << "UPDATING TF2";
         tf.bind();
-            mesh.setAttributeLocation(tf);
+            //mesh.setAttributeLocation(tf);
             glEnable(GL_RASTERIZER_DISCARD);
                 mesh.bindBuffers();
-                    glDisableVertexAttribArray(tf.getAttributeLocation("nPos"));
-                    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, tf.getAttributeLocation("nPos"));
-//                        glBeginTransformFeedback(GL_POINTS);
-//                            glEnable(GL_DEPTH_TEST);
-//                            mesh.renderPoints();
-//                        glEndTransformFeedback();
+                    Tucano::Misc::errorCheckFunc(__FILE__, __LINE__);
+                    //VertexAttribute* va = mesh.getAttribute("nPos");
+
+                    write_va->disable();
+                    //glDisableVertexAttribArray(mesh.getAttributeLocation("nPos"));
+
+                    read_va->enable(tf.getAttributeLocation("inPos"));
+                    Tucano::Misc::errorCheckFunc(__FILE__, __LINE__);
+                    glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, write_va->getBufferID());
+                        glBeginTransformFeedback(GL_POINTS);
+                            glEnable(GL_DEPTH_TEST);
+                            mesh.renderPoints();
+                        glEndTransformFeedback();
                     glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, 0);
                 mesh.unbindBuffers();
             glDisable(GL_RASTERIZER_DISCARD);
@@ -109,7 +121,17 @@ public:
      */
     void render (Tucano::Mesh& mesh, const Tucano::Camera& camera, const Tucano::Camera& lightTrackball)
     {
-//        updateTF(mesh, camera, lightTrackball);
+
+        if (read_va == NULL)
+        {
+            read_va = mesh.getAttribute("positions1");
+            write_va = mesh.getAttribute("positions2");
+        }
+
+        if (read_va == NULL || write_va == NULL)
+            qDebug() << "AHHH morri";
+
+        updateTF(mesh, camera, lightTrackball);
         Eigen::Vector4f viewport = camera.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
         simple.bind();
@@ -120,17 +142,25 @@ public:
             simple.setUniform("viewMatrix", camera.getViewMatrix());
 
             glEnable(GL_DEPTH_TEST);
-//            mesh.setAttributeLocation(simple);
+            //mesh.setAttributeLocation(simple);
             mesh.bindBuffers();
-            mesh.resetLocations();
-            mesh.setAttributeLocation("inPos",   simple.getAttributeLocation("inPos"));
-            mesh.setAttributeLocation("vColor", simple.getAttributeLocation("inColor"));
-//            glEnableVertexAttribArray(2);
-//            mesh.setAttributeLocation("nColor", simple.getAttributeLocation("inColor"));
+//            mesh.resetLocations();
+            //qDebug() << mesh.getAttribute("nPos")->getLocation();
+            read_va->disable();
+            write_va->enable(simple.getAttributeLocation("inPos"));
+
+
+            mesh.setAttributeLocation("nColor",  simple.getAttributeLocation("inColor"));
+
             mesh.renderPoints();
             mesh.unbindBuffers();
 
         simple.unbind();
+
+        VertexAttribute *tmp_va;
+        tmp_va = read_va;
+        read_va = write_va;
+        write_va = tmp_va;
     }
 
 };

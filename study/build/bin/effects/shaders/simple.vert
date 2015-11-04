@@ -1,5 +1,5 @@
 #version 400
-in vec4 nPos;
+
 in vec4 inPos;
 in vec4 inColor;
 //in vec4 nColor;

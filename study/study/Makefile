@@ -994,6 +994,8 @@ compiler_moc_header_clean:
 		../../../tucano/effects/phongshader.hpp \
 		../build/bin/effects/tftest.hpp \
 		../build/bin/effects/simpleTest.hpp \
+		../build/bin/effects/simpleTF.hpp \
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
 		glwidget.h
 	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/study/study -I/lcg/home/brferraz/dev/tucano/src -I/lcg/home/brferraz/dev/tucano/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/study/build/bin/effects -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore glwidget.h -o ../build/moc/moc_glwidget.cpp
 
@@ -1677,7 +1679,9 @@ compiler_uic_clean:
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
 		../build/bin/effects/tftest.hpp \
-		../build/bin/effects/simpleTest.hpp
+		../build/bin/effects/simpleTest.hpp \
+		../build/bin/effects/simpleTF.hpp \
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
 	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/uic mainwindow.ui -o ../build/ui/ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -2179,7 +2183,9 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
 		../build/bin/effects/tftest.hpp \
-		../build/bin/effects/simpleTest.hpp
+		../build/bin/effects/simpleTest.hpp \
+		../build/bin/effects/simpleTF.hpp \
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/mainwindow.o mainwindow.cpp
 
 ../build/obj/glwidget.o: glwidget.cpp glwidget.h \
@@ -2520,7 +2526,9 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../../../../Qt/5.5/gcc_64/include/QtWidgets/qdialog.h \
 		../../../tucano/effects/phongshader.hpp \
 		../build/bin/effects/tftest.hpp \
-		../build/bin/effects/simpleTest.hpp
+		../build/bin/effects/simpleTest.hpp \
+		../build/bin/effects/simpleTF.hpp \
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/glwidget.o glwidget.cpp
 
 ../build/obj/moc_mainwindow.o: ../build/moc/moc_mainwindow.cpp 
