@@ -1,7 +1,8 @@
-#version 150
+#version 400
+in vec4 nPos;
 in vec4 inPos;
 in vec4 inColor;
-in vec4 nColor;
+//in vec4 nColor;
 
 out vec4 color;
 
@@ -11,7 +12,7 @@ uniform mat4 projectionMatrix;
 
 void main(void)
 {
-//      color = vec4(vec2(1.0),0.0, 1.0);
+        //vec4 ncolor = nColor;
         color = inColor;
         gl_Position = projectionMatrix * modelMatrix * viewMatrix * inPos;
 }

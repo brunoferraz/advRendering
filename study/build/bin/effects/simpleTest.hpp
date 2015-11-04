@@ -96,12 +96,13 @@ public:
             simple.setUniform("modelMatrix", mesh.getModelMatrix());
             simple.setUniform("viewMatrix", camera.getViewMatrix());
 
-            mesh.setAttributeLocation(simple);
             glEnable(GL_DEPTH_TEST);
             mesh.bindBuffers();
             mesh.resetLocations();
-            mesh.setAttributeLocation("inColor", simple.getAttributeLocation("nColor"));
-            cout << simple.getAttributeLocation("nColor") << endl;
+            mesh.setAttributeLocation("inPos",   0);
+            mesh.setAttributeLocation("vColor", 1);
+//            glEnableVertexAttribArray(2);
+//            mesh.setAttributeLocation("nColor", simple.getAttributeLocation("inColor"));
             mesh.renderPoints();
             mesh.unbindBuffers();
 

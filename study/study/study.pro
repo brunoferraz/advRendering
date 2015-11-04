@@ -36,6 +36,7 @@ HEADERS  += mainwindow.h \
     $$BUILDDIR/effects/phongshader.hpp \
     $$BUILDDIR/effects/tftest.hpp \
     $$BUILDDIR/effects/simpleTest.hpp \
+    $$BUILDDIR/effects/simpleTF.hpp \
 
 FORMS    += mainwindow.ui
 

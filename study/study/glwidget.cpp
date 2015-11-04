@@ -11,10 +11,11 @@ void GLWidget::initialize()
     Tucano::QtTrackballWidget::initialize();
     Tucano::QtTrackballWidget::openMesh("./models/toy.obj");
 
-    int totalVert = 1000; //mesh.getNumberOfVertices();
+    int totalVert = 500; //mesh.getNumberOfVertices();
     std::vector<Eigen::Vector4f> npos;
     std::vector<Eigen::Vector4f> inColor;
     std::vector<Eigen::Vector4f> nColor;
+    std::vector<Eigen::Vector4f> vColor;
 
     std::vector<GLuint> indices;
 
@@ -23,7 +24,7 @@ void GLWidget::initialize()
         Eigen::Vector4f v;
         Eigen::Vector4f c;
         Eigen::Vector4f b;
-        float posX = (rand() * 2 / (float)RAND_MAX);
+        float posX = (rand() * 2/ (float)RAND_MAX);
         float posY = (rand() * 2/ (float)RAND_MAX);
         float posZ = (rand() * 2/ (float)RAND_MAX);
 
@@ -33,17 +34,28 @@ void GLWidget::initialize()
         npos.push_back(v);
         b << 0.0, 0.0, 1.0, 1.0;
         nColor.push_back(b);
+        vColor.push_back(v);
     }
 
     mymesh.createAttribute("inPos", npos);
+    mymesh.createAttribute("nPos", npos);
     mymesh.createAttribute("inColor", inColor);
     mymesh.createAttribute("nColor", nColor);
-    mymesh.setAttributeLocation("nColor", 2);
+    mymesh.createAttribute("vColor", vColor);
     mymesh.loadVertices(npos);
 
-    simple = new Effects::SimpleTest();
-    simple->setShadersDir("./effects/shaders/");
-    simple->initialize();
+
+//    simple = new Effects::SimpleTest();
+//    simple->setShadersDir("./effects/shaders/");
+//    simple->initialize();
+
+    simpleTF = new Effects::SimpleTF();
+    simpleTF->setShadersDir("./effects/shaders/");
+    simpleTF->initialize();
+
+//    shader = new Effects::TFTest();
+//    shader->setShadersDir("./effects/shaders/");
+//    shader->initialize();
 }
 
 void GLWidget::paintGL()
@@ -52,9 +64,12 @@ void GLWidget::paintGL()
 
     glClearColor(0.7, 0.7, 0.7, 1.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glPointSize(5);
+    glPointSize(20);
 
-    simple->render(mymesh, camera, light_trackball);
+//    simple->render(mymesh, camera, light_trackball);
+    simpleTF->render(mymesh, camera, light_trackball);
+//    shader->render(mymesh, camera, light_trackball);
+
     camera.render();
 //    update();
 }
