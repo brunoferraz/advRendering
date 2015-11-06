@@ -7,6 +7,7 @@
 #include <tftest.hpp>
 #include <simpleTest.hpp>
 #include <simpleTF.hpp>
+#include <pingpong.hpp>
 
 class GLWidget : public Tucano::QtTrackballWidget
 {
@@ -20,6 +21,7 @@ public:
     Effects::TFTest *shader;
     Effects::SimpleTest *simple;
     Effects::SimpleTF *simpleTF;
+    Effects::PingPong *pingpong;
 
     Mesh mymesh;
 

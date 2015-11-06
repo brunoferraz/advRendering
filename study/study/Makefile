@@ -63,6 +63,8 @@ DIST          = ../build/bin/effects/shaders/tf.vert \
 		../build/bin/effects/shaders/tf.frag \
 		../build/bin/effects/shaders/tfrender.vert \
 		../build/bin/effects/shaders/tfrender.frag \
+		../build/bin/effects/shaders/pptfrender.vert \
+		../build/bin/effects/shaders/pptfrender.frag \
 		../build/bin/effects/shaders/simple.vert \
 		../build/bin/effects/shaders/simple.frag \
 		../../../../Qt/5.5/gcc_64/mkspecs/features/spec_pre.prf \
@@ -201,7 +203,8 @@ DIST          = ../build/bin/effects/shaders/tf.vert \
 		../build/bin/effects/phongshader.hpp \
 		../build/bin/effects/tftest.hpp \
 		../build/bin/effects/simpleTest.hpp \
-		../build/bin/effects/simpleTF.hpp main.cpp \
+		../build/bin/effects/simpleTF.hpp \
+		../build/bin/effects/pingpong.hpp main.cpp \
 		mainwindow.cpp \
 		glwidget.cpp
 QMAKE_TARGET  = study
@@ -520,7 +523,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h glwidget.h ../../../tucano/src/utils/qttrackballwidget.hpp ../build/bin/effects/phongshader.hpp ../build/bin/effects/tftest.hpp ../build/bin/effects/simpleTest.hpp ../build/bin/effects/simpleTF.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h glwidget.h ../../../tucano/src/utils/qttrackballwidget.hpp ../build/bin/effects/phongshader.hpp ../build/bin/effects/tftest.hpp ../build/bin/effects/simpleTest.hpp ../build/bin/effects/simpleTF.hpp ../build/bin/effects/pingpong.hpp $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp mainwindow.cpp glwidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
@@ -996,6 +999,7 @@ compiler_moc_header_clean:
 		../build/bin/effects/simpleTest.hpp \
 		../build/bin/effects/simpleTF.hpp \
 		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
+		../build/bin/effects/pingpong.hpp \
 		glwidget.h
 	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/moc $(DEFINES) -I/lcg/home/brferraz/Qt/5.5/gcc_64/mkspecs/linux-g++ -I/lcg/home/brferraz/dev/advRendering/study/study -I/lcg/home/brferraz/dev/tucano/src -I/lcg/home/brferraz/dev/tucano/effects -I/usr/include/eigen3 -I/lcg/home/brferraz/dev/advRendering/study/build/bin/effects -I/lcg/home/brferraz/Qt/5.5/gcc_64/include -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtOpenGL -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtWidgets -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtGui -I/lcg/home/brferraz/Qt/5.5/gcc_64/include/QtCore glwidget.h -o ../build/moc/moc_glwidget.cpp
 
@@ -1681,7 +1685,8 @@ compiler_uic_clean:
 		../build/bin/effects/tftest.hpp \
 		../build/bin/effects/simpleTest.hpp \
 		../build/bin/effects/simpleTF.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
+		../build/bin/effects/pingpong.hpp
 	/lcg/home/brferraz/Qt/5.5/gcc_64/bin/uic mainwindow.ui -o ../build/ui/ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -2185,7 +2190,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../build/bin/effects/tftest.hpp \
 		../build/bin/effects/simpleTest.hpp \
 		../build/bin/effects/simpleTF.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
+		../build/bin/effects/pingpong.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/mainwindow.o mainwindow.cpp
 
 ../build/obj/glwidget.o: glwidget.cpp glwidget.h \
@@ -2528,7 +2534,8 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 		../build/bin/effects/tftest.hpp \
 		../build/bin/effects/simpleTest.hpp \
 		../build/bin/effects/simpleTF.hpp \
-		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug
+		../../../../Qt/5.5/gcc_64/include/QtCore/QDebug \
+		../build/bin/effects/pingpong.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ../build/obj/glwidget.o glwidget.cpp
 
 ../build/obj/moc_mainwindow.o: ../build/moc/moc_mainwindow.cpp 

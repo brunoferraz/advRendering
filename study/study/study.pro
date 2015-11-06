@@ -37,6 +37,7 @@ HEADERS  += mainwindow.h \
     $$BUILDDIR/effects/tftest.hpp \
     $$BUILDDIR/effects/simpleTest.hpp \
     $$BUILDDIR/effects/simpleTF.hpp \
+    $$BUILDDIR/effects/pingpong.hpp \
 
 FORMS    += mainwindow.ui
 
@@ -45,5 +46,7 @@ DISTFILES += \
     ../build/bin/effects/shaders/tf.frag \
     ../build/bin/effects/shaders/tfrender.vert \
     ../build/bin/effects/shaders/tfrender.frag \
+    ../build/bin/effects/shaders/pptfrender.vert \
+    ../build/bin/effects/shaders/pptfrender.frag \
     ../build/bin/effects/shaders/simple.vert \
     ../build/bin/effects/shaders/simple.frag

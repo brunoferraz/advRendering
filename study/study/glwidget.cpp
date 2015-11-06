@@ -39,7 +39,7 @@ void GLWidget::initialize()
 
     mymesh.createAttribute("positions1", npos);
     mymesh.createAttribute("positions2", npos);
-    mymesh.createAttribute("inColor", inColor);
+    mymesh.createAttribute("inColor", vColor);
     mymesh.createAttribute("nColor", nColor);
     mymesh.createAttribute("vColor", vColor);
     mymesh.loadVertices(npos);
@@ -49,9 +49,13 @@ void GLWidget::initialize()
 //    simple->setShadersDir("./effects/shaders/");
 //    simple->initialize();
 
-    simpleTF = new Effects::SimpleTF();
-    simpleTF->setShadersDir("./effects/shaders/");
-    simpleTF->initialize();
+//    simpleTF = new Effects::SimpleTF();
+//    simpleTF->setShadersDir("./effects/shaders/");
+//    simpleTF->initialize();
+
+    pingpong = new Effects::PingPong();
+    pingpong->setShadersDir("./effects/shaders/");
+    pingpong->initialize();
 
 //    shader = new Effects::TFTest();
 //    shader->setShadersDir("./effects/shaders/");
@@ -67,8 +71,9 @@ void GLWidget::paintGL()
     glPointSize(20);
 
 //    simple->render(mymesh, camera, light_trackball);
-    simpleTF->render(mymesh, camera, light_trackball);
+//    simpleTF->render(mymesh, camera, light_trackball);
 //    shader->render(mymesh, camera, light_trackball);
+    pingpong->render(mymesh, camera, light_trackball);
 
     camera.render();
     update();
