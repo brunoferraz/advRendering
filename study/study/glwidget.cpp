@@ -11,7 +11,7 @@ void GLWidget::initialize()
     Tucano::QtTrackballWidget::initialize();
     Tucano::QtTrackballWidget::openMesh("./models/toy.obj");
 
-    int totalVert = 500; //mesh.getNumberOfVertices();
+    int totalVert = 1000; //mesh.getNumberOfVertices();
     std::vector<Eigen::Vector4f> npos;
     std::vector<Eigen::Vector4f> inColor;
     std::vector<Eigen::Vector4f> nColor;
@@ -68,7 +68,7 @@ void GLWidget::paintGL()
 
     glClearColor(0.7, 0.7, 0.7, 1.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glPointSize(20);
+    glPointSize(2);
 
 //    simple->render(mymesh, camera, light_trackball);
 //    simpleTF->render(mymesh, camera, light_trackball);

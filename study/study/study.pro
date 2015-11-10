@@ -42,6 +42,8 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 DISTFILES += \
+    ../build/bin/effects/shaders/pptf.vert \
+    ../build/bin/effects/shaders/pptf.frag \
     ../build/bin/effects/shaders/tf.vert \
     ../build/bin/effects/shaders/tf.frag \
     ../build/bin/effects/shaders/tfrender.vert \
