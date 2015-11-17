@@ -12,7 +12,7 @@ TARGET = newShaders
 TEMPLATE = app
 
 EIGEN_PATH  =  /usr/include/eigen3
-TUCANO_PATH = $$PWD/../../tucano-master
+TUCANO_PATH = $$PWD/../../../tucano
 SHADERS_PATH = $$PWD/../../build
 
 BUILDDIR = $$PWD/../build/

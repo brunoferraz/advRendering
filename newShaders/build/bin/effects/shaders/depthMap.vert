@@ -22,6 +22,9 @@ uniform vec4 default_color;
 // if attribute in_Color exists or not
 uniform bool has_color;
 
+float near = 0.1;
+float far = 10000.0;
+
 void main(void)
 {
         mat4 modelViewMatrix = viewMatrix * modelMatrix;

@@ -8,5 +8,5 @@ out vec4 nPos;
 
 void main(void)
 {
-    nPos = vec4(inPos.xyz + vec3(0.01, 0.01,0), 1.0);
+    nPos = vec4(inPos.xyz + vec3(0.001, 0.001,0), 1.0);
 }

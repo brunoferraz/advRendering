@@ -142,13 +142,13 @@ public:
         pprender.setUniform("default_color", default_color);
 
         //BIND BUFFERS TO LOCATIONS
-
             read_va->enable(pprender.getAttributeLocation("in_Position"));
             mesh.getAttribute("inColor")->enable(pprender.getAttributeLocation("in_Color"));
 
         glEnable(GL_DEPTH_TEST);
 
         mesh.renderPoints();
+//        mesh.renderElements();
         mesh.unbindBuffers();
 
         pprender.unbind();

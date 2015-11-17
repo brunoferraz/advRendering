@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <utils/qttrackballwidget.hpp>
 
+
 #include <phongshader.hpp>
 #include <phongcompleteshader.h>
 #include <shownormals.h>

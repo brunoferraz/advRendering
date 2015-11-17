@@ -11,7 +11,7 @@ void GLWidget::initialize()
     Tucano::QtTrackballWidget::initialize();
     Tucano::QtTrackballWidget::openMesh("./models/toy.obj");
 
-    int totalVert = 1000; //mesh.getNumberOfVertices();
+    int totalVert = 1000000; //mesh.getNumberOfVertices();
     std::vector<Eigen::Vector4f> npos;
     std::vector<Eigen::Vector4f> inColor;
     std::vector<Eigen::Vector4f> nColor;
